@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ZÉLL-V Free Online Masterclass · Build a Legacy Business in the $4 Trillion Wellness Industry</title>
+<meta name="description" content="A free 2-hour online masterclass for people who want to build a real business in wellness — without a lab, a licence, or a product of their own. Limited to the first 50 registrations." />
+<meta property="og:title" content="ZÉLL-V Free Online Masterclass" />
+<meta property="og:description" content="Free 2-hour online masterclass: how ZÉLL-V partners build recurring income on 70+ years of Swiss & German cytotherapy research." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     THEME — tokens lifted from kokoronoka.github.io/businessZellv
+     ============================================================ */
+  :root{
+    --bg:#FBF8F2;
+    --bg-2:#F4EEE2;
+    --bg-3:#FFFFFF;
+    --glass:rgba(255,255,255,.72);
+    --glass-strong:rgba(255,255,255,.95);
+    --border:rgba(110,80,20,.14);
+    --border-strong:rgba(110,80,20,.28);
+    --ink:#1C1712;
+    --ink-soft:#5E564B;
+    --ink-faint:#6F6557;
+    --gold:#836013;
+    --gold-2:#C9A13B;
+    --green:#22C55E;
+    --yellow:#B8860B;
+    --alert:#9A3B2F;
+
+    --sans:'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --gutter:clamp(20px,5vw,48px);
+    --section-y:clamp(56px,8vw,104px);
+    --r-card:24px;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+  h1,h2,h3,h4,h5{font-family:var(--sans);font-weight:600;text-wrap:balance;margin:0;color:var(--ink);letter-spacing:-.02em;}
+  p{margin:0;}
+  ::selection{background:var(--gold);color:#fff;}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
+
+  /* ---- layout: single narrow centred column (webinar flow) ---- */
+  .section{padding:var(--section-y) var(--gutter);position:relative;}
+  .narrow{max-width:760px;margin-inline:auto;text-align:center;}
+  .wide{max-width:1040px;margin-inline:auto;}
+  .section-alt{background:var(--bg-2);}
+  .section-deep{background:var(--bg-3);}
+  .section-dark{background:var(--ink);color:var(--bg);}
+
+  .eyebrow{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px;
+  }
+  .eyebrow::before,.eyebrow::after{content:"";width:22px;height:1px;background:currentColor;display:inline-block;}
+
+  h2.h-title{font-size:clamp(28px,4.2vw,46px);line-height:1.12;max-width:20ch;margin-inline:auto;}
+  p.lede{font-size:clamp(16px,1.6vw,18.5px);color:var(--ink-soft);max-width:60ch;margin:20px auto 0;line-height:1.7;}
+  .gold{background:linear-gradient(120deg,#6E4F0E 0%,#A87D22 55%,#8C6716 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .rule{height:1px;width:120px;margin:22px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6;}
+
+  /* ---- buttons (verbatim from the business site) ---- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;font-size:14.5px;
+    padding:14px 26px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+    text-decoration:none;transition:transform .2s ease, background .25s ease, border-color .25s ease;
+  }
+  .btn svg{width:16px;height:16px;flex:none;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-solid{background:var(--ink);color:#fff;}
+  .btn-solid:hover{background:var(--gold);}
+  .btn-glass{background:var(--glass);border-color:var(--border);color:var(--ink);backdrop-filter:blur(10px);}
+  .btn-glass:hover{background:var(--glass-strong);border-color:var(--border-strong);}
+  .btn-lg{padding:17px 34px;font-size:15.5px;}
+  .btn-wide{min-width:min(420px,100%);}
+  .section-dark .btn-solid{background:var(--gold-2);color:var(--ink);}
+  .section-dark .btn-solid:hover{background:#fff;}
+
+  .glass{background:var(--glass);border:1px solid var(--border);border-radius:var(--r-card);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+  .section-dark .glass{background:rgba(255,255,255,.055);border-color:rgba(201,161,59,.26);}
+
+  /* ---- the repeating CTA block (after every section) ---- */
+  .cta-block{margin-top:40px;display:grid;justify-items:center;gap:16px;}
+  .price-line{display:flex;align-items:baseline;justify-content:center;flex-wrap:wrap;gap:9px;font-size:14.5px;color:var(--ink-soft);}
+  .section-dark .price-line{color:rgba(251,248,242,.7);}
+  .price-was{font-family:var(--mono);text-decoration:line-through;color:var(--ink-faint);}
+  .section-dark .price-was{color:rgba(251,248,242,.5);}
+  .price-now{font-weight:700;color:var(--gold);font-size:15.5px;}
+  .section-dark .price-now{color:var(--gold-2);}
+  .cta-note{font-size:12.5px;color:var(--ink-faint);line-height:1.6;max-width:44ch;}
+  .section-dark .cta-note{color:rgba(251,248,242,.6);}
+  .cta-note b{color:var(--alert);font-weight:700;}
+  .section-dark .cta-note b{color:#E0A79B;}
+
+  /* ---- hero ---- */
+  .hero{padding:clamp(40px,7vw,76px) var(--gutter) clamp(52px,7vw,88px);}
+  .badge{display:inline-flex;align-items:center;border:1px solid var(--border);background:rgba(28,23,18,.05);padding:7px 14px;border-radius:999px;backdrop-filter:blur(12px);}
+  .badge span{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);display:flex;align-items:center;gap:8px;}
+  .badge svg{width:14px;height:14px;color:var(--gold);}
+
+  .hero h1{margin-top:26px;font-size:clamp(32px,5.2vw,62px);font-weight:500;letter-spacing:-.045em;line-height:1.02;}
+  .hero h1 .grad{background:linear-gradient(135deg,var(--ink) 0%,var(--ink) 40%,#A87D22 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero h2{margin-top:22px;font-size:clamp(19px,2.4vw,27px);font-weight:500;line-height:1.35;color:var(--ink-soft);max-width:26ch;margin-inline:auto;letter-spacing:-.02em;}
+  .hero .intro{margin-top:22px;font-size:clamp(15.5px,1.6vw,17.5px);line-height:1.75;color:var(--ink-soft);max-width:58ch;margin-inline:auto;}
+  .hero .intro strong{color:var(--ink);font-weight:700;}
+
+  .hero-photo{margin:38px auto 0;max-width:300px;}
+  .hero-photo .frame{border-radius:var(--r-card);overflow:hidden;border:1px solid var(--border);position:relative;box-shadow:0 25px 50px -12px rgba(80,60,20,.18);}
+  .hero-photo img{aspect-ratio:4/5;object-fit:cover;width:100%;}
+  .hero-photo .cap{margin-top:14px;font-size:13.5px;color:var(--ink-soft);line-height:1.5;}
+  .hero-photo .cap b{color:var(--ink);font-weight:700;}
+  .hero-photo .cap .role{display:block;margin-top:3px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);}
+
+  .logistics{margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 18px;}
+  .logistics .li{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:600;color:var(--ink);}
+  .logistics .li svg{width:17px;height:17px;color:var(--gold);}
+  .logistics .li .mono{font-family:var(--mono);font-size:14px;letter-spacing:-.01em;}
+  .logistics .dot{width:4px;height:4px;border-radius:999px;background:var(--border-strong);}
+
+  .pill-row{margin-top:26px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+  .pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--border);background:rgba(28,23,18,.05);padding:6px 13px;border-radius:999px;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--ink-soft);}
+  .pill svg{width:13px;height:13px;color:var(--yellow);}
+  .ping{position:relative;display:flex;width:8px;height:8px;}
+  .ping .a{position:absolute;inset:0;border-radius:999px;background:#4ADE80;opacity:.75;animation:ping 1s cubic-bezier(0,0,.2,1) infinite;}
+  .ping .b{position:relative;border-radius:999px;width:8px;height:8px;background:var(--green);}
+  @keyframes ping{75%,100%{transform:scale(2);opacity:0;}}
+
+  /* ---- pain points ---- */
+  .pain-grid{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;text-align:left;}
+  .pain{display:grid;grid-template-columns:34px minmax(0,1fr);gap:16px;padding:24px;transition:border-color .25s ease, transform .25s ease;}
+  .pain:hover{border-color:rgba(166,124,27,.4);transform:translateY(-3px);}
+  .pain-mark{width:34px;height:34px;border-radius:999px;border:1px solid rgba(154,59,47,.3);background:rgba(154,59,47,.06);display:flex;align-items:center;justify-content:center;color:var(--alert);flex:none;}
+  .pain-mark svg{width:15px;height:15px;}
+  .pain p{font-size:14.5px;line-height:1.65;color:var(--ink-soft);}
+  .pain p strong{color:var(--ink);font-weight:700;}
+  .closing{margin:36px auto 0;max-width:62ch;font-size:clamp(15.5px,1.6vw,17.5px);line-height:1.8;color:var(--ink-soft);}
+  .closing strong{color:var(--ink);font-weight:700;}
+
+  /* ---- mid cta band ---- */
+  .band{position:relative;overflow:hidden;padding:clamp(30px,4vw,48px);border-color:rgba(166,124,27,.3);}
+  .band::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 150% at 50% 0%,rgba(166,124,27,.18),transparent 62%);pointer-events:none;}
+  .band > *{position:relative;}
+  .band h3{font-size:clamp(21px,2.8vw,32px);line-height:1.25;max-width:24ch;margin-inline:auto;}
+  .band .sub{margin-top:14px;font-size:15.5px;color:var(--ink-soft);max-width:46ch;margin-inline:auto;line-height:1.7;}
+
+  /* ---- curriculum ---- */
+  .curr{margin-top:40px;text-align:left;}
+  .curr-row{display:grid;grid-template-columns:36px minmax(0,1fr);column-gap:20px;padding:26px 0;border-bottom:1px solid var(--border);}
+  .curr-row:last-child{border-bottom:none;}
+  .curr-no{grid-row:1 / span 2;width:36px;height:36px;border-radius:999px;border:1px solid rgba(166,124,27,.4);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;color:var(--gold);transition:background .25s ease, color .25s ease;flex:none;}
+  .curr-row:hover .curr-no{background:var(--gold);color:#fff;}
+  .curr-row h3{font-size:17px;font-weight:700;line-height:1.45;letter-spacing:-.01em;}
+  .curr-row p{margin-top:8px;font-size:14px;color:var(--ink-soft);line-height:1.7;}
+  .curr-row p strong{color:var(--ink);font-weight:700;}
+
+  /* ---- credibility (dark) ---- */
+  .section-dark h2.h-title,.section-dark h3{color:var(--bg);}
+  .section-dark p.lede,.section-dark .closing{color:rgba(251,248,242,.78);}
+  .section-dark .closing strong{color:var(--gold-2);}
+  .section-dark .eyebrow{color:var(--gold-2);}
+  .cred-stats{margin-top:40px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}
+  .cred-stat{padding:26px 18px;text-align:center;transition:border-color .25s ease, transform .25s ease;}
+  .cred-stat:hover{border-color:rgba(201,161,59,.5);transform:translateY(-3px);}
+  .cred-fig{font-family:var(--mono);font-size:clamp(26px,3.4vw,38px);font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--gold-2);font-variant-numeric:tabular-nums;}
+  .cred-lbl{margin-top:11px;font-size:12px;font-weight:500;line-height:1.5;color:rgba(251,248,242,.7);}
+  .cred-note{margin-top:16px;padding:26px 30px;}
+  .cred-note p{font-size:14.5px;line-height:1.75;color:rgba(251,248,242,.78);}
+  .cred-note strong{color:var(--gold-2);font-weight:700;}
+  .media-row{margin-top:30px;display:flex;flex-wrap:wrap;justify-content:center;gap:9px;}
+  .media-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;border:1px solid rgba(201,161,59,.3);background:rgba(255,255,255,.04);font-size:12.5px;font-weight:600;color:rgba(251,248,242,.75);}
+  .media-chip svg{width:13px;height:13px;color:var(--gold-2);}
+
+  /* ---- speaker ---- */
+  .split{margin-top:8px;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(28px,5vw,56px);align-items:center;text-align:left;}
+  .about-photo{border-radius:var(--r-card);overflow:hidden;border:1px solid var(--border);position:relative;box-shadow:0 25px 50px -12px rgba(80,60,20,.16);}
+  .about-photo img{aspect-ratio:4/5;object-fit:cover;width:100%;}
+  .spk-hi{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);}
+  .spk-name{margin-top:12px;font-size:clamp(28px,3.6vw,44px);line-height:1.08;letter-spacing:-.035em;}
+  .spk-role{margin-top:10px;font-size:14.5px;color:var(--ink-soft);}
+  .spk-bio{margin-top:22px;font-size:15.5px;line-height:1.85;color:var(--ink-soft);max-width:56ch;}
+  .spk-bio strong{color:var(--gold);font-weight:700;}
+  .spk-bio .u{text-decoration:underline;text-decoration-color:rgba(154,59,47,.45);text-underline-offset:3px;color:var(--alert);}
+  .spk-creds{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px;}
+  .spk-creds li{display:flex;gap:12px;font-size:14px;line-height:1.55;color:var(--ink-soft);}
+  .spk-check{flex:none;width:22px;height:22px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:rgba(28,23,18,.06);border:1px solid var(--border);}
+  .spk-check svg{width:12px;height:12px;color:var(--gold);}
+
+  /* ---- before / after ---- */
+  .ba-grid{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start;text-align:left;}
+  .ba-card{padding:30px;}
+  .ba-card.after{border-color:rgba(166,124,27,.35);background:var(--glass-strong);}
+  .ba-tag{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:7px 13px;border-radius:999px;}
+  .ba-tag.before{color:var(--alert);background:rgba(154,59,47,.08);border:1px solid rgba(154,59,47,.25);}
+  .ba-tag.after{color:var(--gold);background:rgba(166,124,27,.1);border:1px solid rgba(166,124,27,.3);}
+  .ba-card ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:15px;}
+  .ba-card li{display:flex;gap:13px;font-size:14.5px;line-height:1.6;color:var(--ink-soft);}
+  .ba-ico{flex:none;width:22px;height:22px;border-radius:999px;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .ba-ico.x{background:rgba(154,59,47,.08);border:1px solid rgba(154,59,47,.25);color:var(--alert);}
+  .ba-ico.c{background:rgba(166,124,27,.1);border:1px solid rgba(166,124,27,.3);color:var(--gold);}
+  .ba-ico svg{width:12px;height:12px;}
+
+  /* ---- testimonials ---- */
+  .tm-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;text-align:left;}
+  .tm-card{padding:14px;text-decoration:none;color:var(--ink);display:block;transition:border-color .25s ease, transform .25s ease;}
+  .tm-card:hover{border-color:rgba(166,124,27,.45);transform:translateY(-4px);}
+  .tm-shot{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#000;}
+  .tm-shot img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .3s ease;}
+  .tm-card:hover .tm-shot img{transform:scale(1.05);opacity:1;}
+  .tm-play{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:999px;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(166,124,27,.18);transition:transform .25s ease;}
+  .tm-card:hover .tm-play{transform:scale(1.08);}
+  .tm-play svg{width:17px;height:17px;margin-left:2px;}
+  .tm-body{padding:16px 10px 6px;}
+  .tm-name{font-size:17px;font-weight:700;letter-spacing:-.02em;}
+  .tm-topic{margin-top:5px;font-size:13px;color:var(--ink-soft);line-height:1.55;}
+  .tm-link{margin-top:12px;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;color:var(--gold);}
+  .tm-link svg{width:13px;height:13px;transition:transform .2s ease;}
+  .tm-card:hover .tm-link svg{transform:translateX(3px);}
+  .tm-solutions{padding:26px;display:flex;flex-direction:column;justify-content:center;text-align:center;background:var(--glass-strong);}
+  .tm-solutions .cred-fig{color:var(--gold);}
+  .tm-solutions h3{margin-top:12px;font-size:19px;}
+  .tm-solutions p{margin-top:10px;font-size:13px;color:var(--ink-soft);line-height:1.65;}
+
+  /* ---- final cta (dark) ---- */
+  .final-card{margin:38px auto 0;max-width:560px;padding:clamp(26px,4vw,38px);text-align:left;}
+  .final-details{list-style:none;margin:0;padding:0;display:grid;}
+  .final-details li{display:grid;grid-template-columns:18px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(201,161,59,.18);}
+  .final-details li:last-child{border-bottom:none;}
+  .final-details svg{width:18px;height:18px;color:var(--gold-2);}
+  .final-details .k{font-size:13.5px;color:rgba(251,248,242,.6);}
+  .final-details .v{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--bg);text-align:right;}
+  .final-price{margin-top:20px;padding-top:18px;border-top:1px solid rgba(201,161,59,.25);}
+  .sign-off{margin-top:34px;}
+  .sign-off .line{font-size:clamp(19px,2.4vw,26px);font-weight:600;letter-spacing:-.02em;color:var(--gold-2);}
+  .sign-off .who{margin-top:9px;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:rgba(251,248,242,.6);}
+
+  /* ---- footer ---- */
+  footer{background:var(--bg-3);border-top:1px solid var(--border);padding:52px var(--gutter) 30px;text-align:center;}
+  .foot-brand{font-weight:800;font-size:22px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;display:inline-block;}
+  .foot-brand em{font-style:normal;color:var(--gold);}
+  .foot-tag{margin-top:10px;font-size:13.5px;color:var(--ink-soft);}
+  .foot-desc{margin:22px auto 0;max-width:52ch;font-size:13px;color:var(--ink-soft);line-height:1.7;}
+  .foot-links{margin-top:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;}
+  .foot-links a{font-size:13.5px;font-weight:600;color:var(--ink-soft);text-decoration:none;transition:color .2s ease;}
+  .foot-links a:hover{color:var(--gold);}
+  .foot-copy{margin-top:28px;font-size:12.5px;color:var(--ink-faint);}
+  .foot-disclaimer{margin:14px auto 0;max-width:72ch;font-size:11.5px;color:var(--ink-faint);line-height:1.65;}
+
+  /* ---- sticky mobile bar ---- */
+  .sticky-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:140;padding:12px var(--gutter);
+    background:rgba(251,248,242,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--border);}
+  .sticky-bar .btn{width:100%;}
+
+  /* ---- modal ---- */
+  .modal{position:fixed;inset:0;z-index:300;display:none;}
+  .modal.open{display:block;}
+  .modal-scrim{position:absolute;inset:0;background:rgba(28,23,18,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:mFade .25s ease-out;}
+  .modal-shell{position:relative;height:100%;overflow-y:auto;padding:24px var(--gutter);display:grid;place-items:start center;}
+  @media (min-width:640px){.modal-shell{place-items:center;}}
+  .modal-card{position:relative;width:100%;max-width:520px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r-card);box-shadow:0 40px 80px -20px rgba(80,60,20,.4);padding:clamp(26px,4vw,38px);animation:mPop .3s cubic-bezier(.2,.9,.3,1.2);}
+  @keyframes mFade{from{opacity:0}to{opacity:1}}
+  @keyframes mPop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+  .modal-close{position:absolute;top:14px;right:14px;z-index:2;width:36px;height:36px;border-radius:999px;border:1px solid var(--border);background:rgba(28,23,18,.04);color:var(--ink-soft);display:flex;align-items:center;justify-content:center;cursor:pointer;}
+  .modal-close:hover{color:var(--ink);border-color:var(--border-strong);}
+  .modal-close svg{width:15px;height:15px;}
+  .modal-when{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-soft);text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;}
+  .modal-when svg{width:14px;height:14px;color:var(--gold);}
+  .modal-card h3{margin-top:16px;font-size:clamp(23px,3vw,29px);text-align:center;letter-spacing:-.03em;}
+  .modal-card .intro{margin-top:10px;font-size:14px;color:var(--ink-soft);text-align:center;line-height:1.6;}
+
+  .cf-form{margin-top:24px;display:grid;gap:14px;}
+  .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .cf-field label{display:block;font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:7px;}
+  .cf-field input,.cf-field select{width:100%;background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--ink);font-family:var(--sans);font-size:14.5px;transition:border-color .2s ease, background .2s ease;}
+  .cf-field select{appearance:none;background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E564B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px;padding-right:42px;}
+  .cf-field input::placeholder{color:var(--ink-faint);}
+  .cf-field input:focus,.cf-field select:focus{outline:none;border-color:var(--gold);background:var(--glass-strong);}
+  .cf-error{display:none;font-size:13px;font-weight:600;color:var(--alert);}
+  .cf-error.show{display:block;}
+  .cf-note{font-size:12.5px;color:var(--ink-faint);line-height:1.6;text-align:center;}
+  .cf-success{display:none;text-align:center;}
+  .cf-success.show{display:block;}
+  .cf-success .tick{width:60px;height:60px;margin:0 auto;border-radius:999px;background:rgba(166,124,27,.1);border:1px solid rgba(166,124,27,.3);display:flex;align-items:center;justify-content:center;}
+  .cf-success .tick svg{width:26px;height:26px;color:var(--gold);}
+  .cf-success h3{margin-top:18px;}
+  .cf-success p{margin-top:12px;font-size:14.5px;color:var(--ink-soft);line-height:1.7;}
+
+  /* ---- reveal ---- */
+  @keyframes fadeSlideIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  .fade-in{animation:fadeSlideIn .8s ease-out both;}
+  .d1{animation-delay:.1s;} .d2{animation-delay:.2s;} .d3{animation-delay:.3s;} .d4{animation-delay:.4s;}
+  @media (prefers-reduced-motion: no-preference){ .js-reveal{opacity:0;} }
+  @media (prefers-reduced-motion: reduce){ .ping .a,.fade-in{animation:none;} }
+
+  /* ---- placeholders ---- */
+  .ph{border:1px dashed rgba(166,124,27,.55);background:rgba(166,124,27,.06);border-radius:var(--r-card);
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;}
+  .ph .ph-in{display:grid;gap:8px;justify-items:center;}
+  .ph svg{width:30px;height:30px;color:var(--gold);opacity:.7;}
+  .ph-cap{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);}
+  .ph-sub{font-size:12px;color:var(--ink-faint);max-width:24ch;line-height:1.5;}
+  .tok{background:rgba(166,124,27,.14);border-bottom:1px dotted var(--gold);border-radius:3px;padding:0 .3em;font-style:normal;}
+  .section-dark .tok{background:rgba(201,161,59,.22);border-bottom-color:var(--gold-2);}
+
+  /* ---- responsive ---- */
+  @media (max-width:900px){
+    .cred-stats{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .tm-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .split{grid-template-columns:minmax(0,1fr);gap:28px;text-align:center;}
+    .about-photo{max-width:280px;margin-inline:auto;}
+    .spk-bio,.spk-creds{margin-inline:auto;}
+    .spk-creds li{text-align:left;}
+  }
+  @media (max-width:700px){
+    .sticky-bar{display:block;}
+    body{padding-bottom:78px;}
+    .pain-grid,.ba-grid,.tm-grid,.cf-row{grid-template-columns:minmax(0,1fr);}
+    .btn-wide{width:100%;}
+    .logistics{gap:8px 14px;}
+    .logistics .dot{display:none;}
+  }
+</style>
+</head>
+
+<body id="top">
+
+<!-- icon sprite — from the ZÉLL-V business site -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 5l14 14M19 5L5 19" stroke-linecap="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6L12 2Z"/></symbol>
+  <symbol id="i-crown" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4 3 5-6 5 6 4-3-2 11H5L3 8Z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/></symbol>
+  <symbol id="i-microscope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8M3 22h18M14 22a7 7 0 1 0 0-14h-1M9 14h2M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2ZM12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-screen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8Z"/><path d="M14 6v12" stroke-dasharray="2 3"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 2.4 17.5A2 2 0 0 0 4.1 20.5h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></symbol>
+</svg>
+
+<!-- ============================================================ -->
+<!-- 1 · HERO                                                     -->
+<!-- ============================================================ -->
+<section class="hero">
+  <div class="narrow">
+
+    <div class="fade-in">
+      <span class="badge"><span><svg><use href="#i-crown"/></svg> Free Online Masterclass</span></span>
+    </div>
+
+    <h1 class="fade-in d1">
+      The wellness industry is worth <span class="grad">$4 trillion</span> — and most people will only ever watch it from outside
+    </h1>
+
+    <h2 class="fade-in d1">
+      You don't need a lab, a licence, or a product of your own to be on the inside of it.
+    </h2>
+
+    <p class="intro fade-in d2">
+      In <strong>2 hours</strong>, see exactly how ZÉLL-V partners build a recurring-income healthcare business on
+      <strong>70+ years of Swiss and German cytotherapy research</strong> — an award-winning brand already operating in
+      14+ markets, with the products, the training and the medical credibility already built for you.
+    </p>
+
+    <!-- speaker photo — centred, as on the webinar reference -->
+    <div class="hero-photo fade-in d2">
+      <!-- SWAP: replace the .ph block with
+           <div class="frame"><img src="assets/speaker.jpg" alt="[SPEAKER NAME]"></div> -->
+      <div class="ph" style="aspect-ratio:4/5">
+        <div class="ph-in">
+          <svg><use href="#i-user"/></svg>
+          <span class="ph-cap">Speaker photo</span>
+          <span class="ph-sub">Presenter portrait, 4:5 crop</span>
+        </div>
+      </div>
+      <p class="cap">
+        Hosted by <b class="tok">[SPEAKER NAME]</b>
+        <span class="role">ZÉLL-V <span class="tok">[Title / Role]</span></span>
+      </p>
+    </div>
+
+    <div class="logistics fade-in d3">
+      <span class="li"><svg><use href="#i-cal"/></svg><span class="mono tok">[DAY], [DATE] · [TIME]</span></span>
+      <span class="dot"></span>
+      <span class="li"><svg><use href="#i-screen"/></svg><span>Online via Zoom</span></span>
+      <span class="dot"></span>
+      <span class="li"><svg><use href="#i-clock"/></svg><span>2 hours, completely free</span></span>
+    </div>
+
+    <div class="cta-block fade-in d3">
+      <p class="price-line">
+        <span>Normally</span>
+        <span class="price-was tok">RM297</span>
+        <svg style="width:14px;height:14px;color:var(--gold)"><use href="#i-arrow"/></svg>
+        <span class="price-now">Free for the first 50 registrations</span>
+      </p>
+      <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
+        Claim my free seat — limited places <svg><use href="#i-arrow"/></svg>
+      </button>
+      <p class="cta-note"><b>No replay will be provided.</b> Miss it and it's gone. Seats are filling — please register early.</p>
+    </div>
+
+    <div class="pill-row fade-in d4">
+      <span class="pill"><span class="ping"><i class="a"></i><i class="b"></i></span> 50 seats only</span>
+      <span class="pill"><svg><use href="#i-star"/></svg> Award-winning cytotherapy brand</span>
+      <span class="pill"><svg><use href="#i-globe"/></svg> 14+ markets</span>
+      <span class="pill"><svg><use href="#i-microscope"/></svg> 16 medical advisors</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 2 · PAIN POINTS                                              -->
+<!-- ============================================================ -->
+<section class="section section-alt">
+  <div class="wide">
+    <div class="narrow js-reveal">
+      <p class="eyebrow">The Honest Part</p>
+      <h2 class="h-title">Does any of this <span class="gold">sound like you?</span></h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="pain-grid">
+      <article class="glass pain js-reveal">
+        <span class="pain-mark"><svg><use href="#i-close"/></svg></span>
+        <p>You've hit a <strong>ceiling on your income</strong> — working more hours is the only lever you have left, and you've run out of hours.</p>
+      </article>
+      <article class="glass pain js-reveal">
+        <span class="pain-mark"><svg><use href="#i-close"/></svg></span>
+        <p>You want to sell something you'd <strong>actually put your name behind</strong> — not another commodity product with no science and no story.</p>
+      </article>
+      <article class="glass pain js-reveal">
+        <span class="pain-mark"><svg><use href="#i-close"/></svg></span>
+        <p>You've looked at wellness before, but every option was <strong>crowded, cheap, or impossible to differentiate</strong> in your market.</p>
+      </article>
+      <article class="glass pain js-reveal">
+        <span class="pain-mark"><svg><use href="#i-close"/></svg></span>
+        <p>You were handed a product and <strong>left to figure the business out alone</strong> — no training, no system, no one to call.</p>
+      </article>
+      <article class="glass pain js-reveal">
+        <span class="pain-mark"><svg><use href="#i-close"/></svg></span>
+        <p>Your customers buy once and disappear. You want <strong>repeat revenue and real relationships</strong>, not one-off transactions.</p>
+      </article>
+      <article class="glass pain js-reveal">
+        <span class="pain-mark"><svg><use href="#i-close"/></svg></span>
+        <p>You want to build something that <strong>outlasts you</strong> — a legacy your family can inherit, not a job you have to keep showing up to.</p>
+      </article>
+    </div>
+
+    <p class="closing js-reveal" style="text-align:center">
+      If even one of those landed — <strong>you're not alone</strong>, and you're not the problem. The opportunity was never
+      the issue either. What's been missing is a brand with real science behind it, a system that trains you, and a market
+      still growing twice as fast as the global economy.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 3 · MID CTA                                                  -->
+<!-- ============================================================ -->
+<section class="section section-deep" style="padding-block:clamp(40px,6vw,76px)">
+  <div class="narrow js-reveal">
+    <div class="glass band">
+      <h3>What you just read is where most people stop. <span class="gold">None of it is a dead end.</span></h3>
+      <p class="sub">It's simply what happens when you're building without a system behind you.</p>
+
+      <div class="cta-block" style="margin-top:28px">
+        <p class="price-line">
+          <span>Normally</span>
+          <span class="price-was tok">RM297</span>
+          <svg style="width:14px;height:14px;color:var(--gold)"><use href="#i-arrow"/></svg>
+          <span class="price-now">Free for the first 50 registrations</span>
+        </p>
+        <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
+          Claim my free seat — limited places <svg><use href="#i-arrow"/></svg>
+        </button>
+        <p class="cta-note"><span class="tok">[DAY], [DATE] · [TIME]</span> · Online via Zoom · No replay</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 4 · WHAT YOU'LL LEARN                                        -->
+<!-- ============================================================ -->
+<section class="section" id="curriculum">
+  <div class="narrow">
+    <div class="js-reveal">
+      <p class="eyebrow">The Agenda</p>
+      <h2 class="h-title">In this <span class="gold">2-hour</span> free masterclass, I'll hold nothing back</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="curr">
+      <article class="curr-row js-reveal">
+        <span class="curr-no">01</span>
+        <h3>Where the $4 trillion actually sits</h3>
+        <p>Personal care, beauty and anti-ageing alone account for <strong>$1,083 billion</strong> — roughly 27% of the
+          wellness industry. Which slice a partner can realistically own, and which to avoid.</p>
+      </article>
+      <article class="curr-row js-reveal">
+        <span class="curr-no">02</span>
+        <h3>The science you get to stand on</h3>
+        <p>Why 70+ years of Swiss and German cytotherapy research, a 99%-pure NMN formulation and an exclusive placenta
+          filtration technique are a <strong>moat competitors can't copy</strong> — and how to explain it in one sentence.</p>
+      </article>
+      <article class="curr-row js-reveal">
+        <span class="curr-no">03</span>
+        <h3>The four-solution portfolio</h3>
+        <p>NMN Anti-Aging Concoction, Platinum Plus sheep placenta, PhytoGreen cellular detox and the wellness retreats —
+          and how they <strong>stack into repeat revenue</strong> instead of one-off sales.</p>
+      </article>
+      <article class="curr-row js-reveal">
+        <span class="curr-no">04</span>
+        <h3>Retreats as your premium tier</h3>
+        <p>How the Men's Vitality and Women's Rejuvenation retreats, plus focused plans for skin, detox, bone &amp; joint and
+          circulation, let you serve clients at a <strong>price point most wellness businesses never reach</strong>.</p>
+      </article>
+      <article class="curr-row js-reveal">
+        <span class="curr-no">05</span>
+        <h3>The support system behind you</h3>
+        <p>The Professional College Academy, cellular therapy symposiums, partner certification, medical consultations and
+          the reward structure — <strong>what you're actually handed on day one</strong>.</p>
+      </article>
+      <article class="curr-row js-reveal">
+        <span class="curr-no">06</span>
+        <h3>How to start, and what it takes</h3>
+        <p>Partnership vs. distributorship, which markets are open, what ZÉLL-V looks for in a partner, and the honest
+          answer to <strong>"is this right for me?"</strong> — including who it isn't for.</p>
+      </article>
+    </div>
+
+    <div class="cta-block js-reveal">
+      <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
+        Claim my free seat — limited places <svg><use href="#i-arrow"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 5 · COMPANY CREDIBILITY                                      -->
+<!-- ============================================================ -->
+<section class="section section-dark">
+  <div class="wide">
+    <div class="narrow js-reveal">
+      <p class="eyebrow">Why ZÉLL-V</p>
+      <h2 class="h-title">Why partners in <span style="color:var(--gold-2)">14+ markets</span> choose ZÉLL-V</h2>
+      <div class="rule"></div>
+      <p class="lede">ZÉLL-V was founded to close the gap conventional medicine leaves open — the slow erosion of vitality
+        that comes with premature ageing and chronic degenerative disease. It unites Swiss and German cytotherapy research,
+        premium biotechnology and luxury wellness retreats into one business you can build a legacy on.</p>
+    </div>
+
+    <div class="cred-stats">
+      <div class="glass cred-stat js-reveal">
+        <div class="cred-fig">70+</div>
+        <p class="cred-lbl">Years of Swiss &amp; German research</p>
+      </div>
+      <div class="glass cred-stat js-reveal">
+        <div class="cred-fig">99%</div>
+        <p class="cred-lbl">NMN formulation purity</p>
+      </div>
+      <div class="glass cred-stat js-reveal">
+        <div class="cred-fig">16</div>
+        <p class="cred-lbl">Doctors on the medical advisory panel</p>
+      </div>
+      <div class="glass cred-stat js-reveal">
+        <div class="cred-fig">14+</div>
+        <p class="cred-lbl">Markets across Europe, US &amp; Asia</p>
+      </div>
+    </div>
+
+    <div class="narrow">
+      <div class="glass cred-note js-reveal">
+        <p>ZÉLL-V is developed and supported by renowned cytotherapy specialists across Switzerland, Germany and beyond —
+          including members of the <strong>International Association for Organ Cell Therapy Specialist (IAOSS)</strong> and
+          the <strong>German Society for Thymus Therapy (GSTT)</strong>.</p>
+      </div>
+
+      <h3 class="js-reveal" style="margin-top:44px;font-size:15.5px;font-weight:500;color:var(--gold-2)">
+        Recognised internationally · Featured across global media
+      </h3>
+      <div class="media-row js-reveal">
+        <span class="media-chip"><svg><use href="#i-star"/></svg> Africa Health</span>
+        <span class="media-chip"><svg><use href="#i-star"/></svg> AirAsia</span>
+        <span class="media-chip"><svg><use href="#i-star"/></svg> Cosmoprof Asia Hong Kong</span>
+        <span class="media-chip"><svg><use href="#i-star"/></svg> Arab Health</span>
+        <span class="media-chip"><svg><use href="#i-star"/></svg> Hurun Report</span>
+        <span class="media-chip"><svg><use href="#i-star"/></svg> SilverKris</span>
+        <span class="media-chip"><svg><use href="#i-star"/></svg> 3Sixty</span>
+        <span class="media-chip"><svg><use href="#i-star"/></svg> Sands Style</span>
+      </div>
+
+      <p class="closing js-reveal" style="text-align:center">
+        This is not a new brand looking for its first believers. This is an international wellness ecosystem —
+        <strong>luxury retreats, premium biotechnology and a long-term business opportunity</strong> — already proven across
+        Europe, the United States and Asia.
+      </p>
+
+      <div class="cta-block js-reveal">
+        <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
+          Claim my free seat — limited places <svg><use href="#i-arrow"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 6 · SPEAKER                                                  -->
+<!-- ============================================================ -->
+<section class="section">
+  <div class="wide">
+    <div class="split js-reveal">
+
+      <div>
+        <!-- SWAP: replace with <figure class="about-photo"><img src="assets/speaker.jpg" alt="[SPEAKER NAME]"></figure> -->
+        <div class="ph" style="aspect-ratio:4/5">
+          <div class="ph-in">
+            <svg><use href="#i-user"/></svg>
+            <span class="ph-cap">Speaker photo</span>
+            <span class="ph-sub">Same portrait as the hero</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="spk-hi">Hello, I'm</p>
+        <h2 class="spk-name"><span class="tok">[SPEAKER NAME]</span></h2>
+        <p class="spk-role">ZÉLL-V <span class="tok">[Title / Role]</span></p>
+
+        <p class="spk-bio">
+          <span class="tok">[Replace this bio.]</span> Over the past <span class="tok">[X]</span> years I've worked with
+          people who were good at what they did but had <span class="u">run out of room to grow</span>; who had
+          <span class="u">sold products they didn't fully believe in</span>; who had
+          <span class="u">been left to build alone</span>. Almost all of them wanted the same thing — something durable,
+          credible, and theirs. What changed the outcome wasn't working harder. It was
+          <strong>standing on a brand with real science, a real system and a real market behind it</strong>. That's what
+          these two hours are about.
+        </p>
+
+        <ul class="spk-creds">
+          <li><span class="spk-check"><svg><use href="#i-check"/></svg></span><span class="tok">[Credential 1 — years with ZÉLL-V, markets built]</span></li>
+          <li><span class="spk-check"><svg><use href="#i-check"/></svg></span><span class="tok">[Credential 2 — partners trained or mentored]</span></li>
+          <li><span class="spk-check"><svg><use href="#i-check"/></svg></span><span class="tok">[Credential 3 — certification, award, symposium role]</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="cta-block js-reveal">
+      <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
+        Claim my free seat — limited places <svg><use href="#i-arrow"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 7 · BEFORE / AFTER                                           -->
+<!-- ============================================================ -->
+<section class="section section-alt">
+  <div class="wide">
+    <div class="narrow js-reveal">
+      <p class="eyebrow">The Difference</p>
+      <h2 class="h-title">Before this masterclass <span class="gold">vs after</span></h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="ba-grid">
+      <article class="glass ba-card js-reveal">
+        <span class="ba-tag before"><svg style="width:12px;height:12px"><use href="#i-close"/></svg> Before</span>
+        <ul>
+          <li><span class="ba-ico x"><svg><use href="#i-close"/></svg></span><span>You know wellness is growing, but you have no idea where you'd actually fit in it.</span></li>
+          <li><span class="ba-ico x"><svg><use href="#i-close"/></svg></span><span>Every opportunity looks the same, and you can't tell the credible ones from the noise.</span></li>
+          <li><span class="ba-ico x"><svg><use href="#i-close"/></svg></span><span>You'd have to invent the product, the science and the training yourself.</span></li>
+          <li><span class="ba-ico x"><svg><use href="#i-close"/></svg></span><span>Income depends entirely on how many hours you personally put in.</span></li>
+          <li><span class="ba-ico x"><svg><use href="#i-close"/></svg></span><span>You keep waiting for the "right time" — and another year goes by.</span></li>
+        </ul>
+      </article>
+
+      <article class="glass ba-card after js-reveal">
+        <span class="ba-tag after"><svg style="width:12px;height:12px"><use href="#i-check"/></svg> After</span>
+        <ul>
+          <li><span class="ba-ico c"><svg><use href="#i-check"/></svg></span><span>You can name the exact segment of the $4T market you'd build in, and why.</span></li>
+          <li><span class="ba-ico c"><svg><use href="#i-check"/></svg></span><span>You can explain the Swiss–German science in one sentence a customer understands.</span></li>
+          <li><span class="ba-ico c"><svg><use href="#i-check"/></svg></span><span>You know what ZÉLL-V hands you on day one — products, training, medical backing, brand.</span></li>
+          <li><span class="ba-ico c"><svg><use href="#i-check"/></svg></span><span>You understand how retreats and repeat purchases create income that compounds.</span></li>
+          <li><span class="ba-ico c"><svg><use href="#i-check"/></svg></span><span>You have a clear yes or no — and if it's yes, the exact next step.</span></li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="closing js-reveal" style="text-align:center">
+      These two hours may be the <strong>most important decision you make for your business this year</strong>.
+    </p>
+
+    <div class="cta-block js-reveal">
+      <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
+        Claim my free seat — limited places <svg><use href="#i-arrow"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 8 · TESTIMONIALS                                             -->
+<!-- ============================================================ -->
+<section class="section">
+  <div class="wide">
+    <div class="narrow js-reveal">
+      <p class="eyebrow">Customer Voices</p>
+      <h2 class="h-title">The proof your customers <span class="gold">will ask for</span></h2>
+      <p class="lede">Real people sharing their experience with ZÉLL-V sheep placenta and cellular therapy — in their own
+        words. This is what you'd be selling behind.</p>
+      <div class="rule"></div>
+    </div>
+
+    <div class="tm-grid">
+      <a class="glass tm-card js-reveal" href="https://www.youtube.com/watch?v=hGw_pZSfdr4" target="_blank" rel="noopener">
+        <div class="tm-shot">
+          <img src="https://kokoronoka.github.io/businessZellv/assets/images/yt-hGw_pZSfdr4.jpg" alt="" loading="lazy">
+          <span class="tm-play"><svg><use href="#i-play"/></svg></span>
+        </div>
+        <div class="tm-body">
+          <p class="tm-name">Steven</p>
+          <p class="tm-topic tok">[One line on what he covers]</p>
+          <span class="tm-link">Watch testimonial <svg><use href="#i-arrow"/></svg></span>
+        </div>
+      </a>
+
+      <a class="glass tm-card js-reveal" href="https://www.youtube.com/watch?v=DiOnIwdBCIc" target="_blank" rel="noopener">
+        <div class="tm-shot">
+          <img src="https://kokoronoka.github.io/businessZellv/assets/images/yt-DiOnIwdBCIc.jpg" alt="" loading="lazy">
+          <span class="tm-play"><svg><use href="#i-play"/></svg></span>
+        </div>
+        <div class="tm-body">
+          <p class="tm-name">Sharon</p>
+          <p class="tm-topic tok">[One line on what she covers]</p>
+          <span class="tm-link">Watch testimonial <svg><use href="#i-arrow"/></svg></span>
+        </div>
+      </a>
+
+      <a class="glass tm-card js-reveal" href="https://www.youtube.com/watch?v=04nc_vLJT2o" target="_blank" rel="noopener">
+        <div class="tm-shot">
+          <img src="https://kokoronoka.github.io/businessZellv/assets/images/yt-04nc_vLJT2o.jpg" alt="" loading="lazy">
+          <span class="tm-play"><svg><use href="#i-play"/></svg></span>
+        </div>
+        <div class="tm-body">
+          <p class="tm-name">Chan Danith</p>
+          <p class="tm-topic tok">[One line on what he covers]</p>
+          <span class="tm-link">Watch testimonial <svg><use href="#i-arrow"/></svg></span>
+        </div>
+      </a>
+
+      <a class="glass tm-card js-reveal" href="https://www.youtube.com/watch?v=vd7cEJaUyy4" target="_blank" rel="noopener">
+        <div class="tm-shot">
+          <img src="https://kokoronoka.github.io/businessZellv/assets/images/yt-vd7cEJaUyy4.jpg" alt="" loading="lazy">
+          <span class="tm-play"><svg><use href="#i-play"/></svg></span>
+        </div>
+        <div class="tm-body">
+          <p class="tm-name">Celine</p>
+          <p class="tm-topic tok">[One line on what she covers]</p>
+          <span class="tm-link">Watch testimonial <svg><use href="#i-arrow"/></svg></span>
+        </div>
+      </a>
+
+      <a class="glass tm-card js-reveal" href="https://www.youtube.com/watch?v=EOwotZU63Tk" target="_blank" rel="noopener">
+        <div class="tm-shot">
+          <img src="https://kokoronoka.github.io/businessZellv/assets/images/yt-EOwotZU63Tk.jpg" alt="" loading="lazy">
+          <span class="tm-play"><svg><use href="#i-play"/></svg></span>
+        </div>
+        <div class="tm-body">
+          <p class="tm-name">Kathy</p>
+          <p class="tm-topic tok">[One line on what she covers]</p>
+          <span class="tm-link">Watch testimonial <svg><use href="#i-arrow"/></svg></span>
+        </div>
+      </a>
+
+      <div class="glass tm-card tm-solutions js-reveal">
+        <div class="cred-fig">4</div>
+        <h3>Solutions behind you</h3>
+        <p>NMN Anti-Aging Concoction · Platinum Plus sheep placenta · PhytoGreen cellular detox · Wellness retreats</p>
+      </div>
+    </div>
+
+    <p class="closing js-reveal" style="text-align:center">
+      Only 50 seats. <strong>Their results can be your proof.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 9 · FINAL CTA                                                -->
+<!-- ============================================================ -->
+<section class="section section-dark">
+  <div class="narrow">
+    <div class="js-reveal">
+      <p class="eyebrow">Last Call</p>
+      <h2 class="h-title">If you're serious about building something that lasts —
+        <span style="color:var(--gold-2)">this is two hours worth giving up.</span></h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="glass final-card js-reveal">
+      <ul class="final-details">
+        <li><svg><use href="#i-cal"/></svg><span class="k">Date</span><span class="v tok">[DAY], [DATE]</span></li>
+        <li><svg><use href="#i-clock"/></svg><span class="k">Time</span><span class="v tok">[TIME]</span></li>
+        <li><svg><use href="#i-screen"/></svg><span class="k">Where</span><span class="v">Zoom — link on registration</span></li>
+        <li><svg><use href="#i-ticket"/></svg><span class="k">Seats</span><span class="v">First 50 only</span></li>
+        <li><svg><use href="#i-alert"/></svg><span class="k">Replay</span><span class="v">None</span></li>
+      </ul>
+
+      <div class="final-price">
+        <p class="price-line">
+          <span>Normally</span>
+          <span class="price-was tok">RM297</span>
+          <svg style="width:14px;height:14px;color:var(--gold-2)"><use href="#i-arrow"/></svg>
+          <span class="price-now">Now completely free</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cta-block js-reveal">
+      <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
+        Claim my free seat · limited places <svg><use href="#i-arrow"/></svg>
+      </button>
+    </div>
+
+    <div class="sign-off js-reveal">
+      <p class="line">See you in the session.</p>
+      <p class="who">— <span class="tok">[SPEAKER NAME]</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 10 · FOOTER                                                  -->
+<!-- ============================================================ -->
+<footer>
+  <a href="#top" class="foot-brand">ZÉLL<em>·</em>V</a>
+  <p class="foot-tag">Give More Life To Your Years</p>
+  <p class="foot-desc">An international wellness ecosystem — luxury retreats, premium biotechnology and long-term business opportunity.</p>
+
+  <div class="foot-links">
+    <a href="#curriculum">What's covered</a>
+    <a href="https://wa.link/x4as2c" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://kokoronoka.github.io/businessZellv/" target="_blank" rel="noopener">About ZÉLL-V</a>
+  </div>
+
+  <p class="foot-copy">© 2026 ZÉLL-V · All Rights Reserved</p>
+  <p class="foot-disclaimer">
+    This site is not affiliated with, sponsored or endorsed by Facebook / Meta Platforms, Inc. in any way.
+    "Facebook" is a registered trademark of Meta Platforms, Inc.
+  </p>
+</footer>
+
+<!-- ============================================================ -->
+<!-- 11 · STICKY MOBILE CTA                                       -->
+<!-- ============================================================ -->
+<div class="sticky-bar">
+  <button class="btn btn-solid btn-lg" data-open-modal>Claim my free seat <svg><use href="#i-arrow"/></svg></button>
+</div>
+
+<!-- ============================================================ -->
+<!-- 12 · REGISTRATION MODAL                                      -->
+<!-- ============================================================ -->
+<div class="modal" id="reg-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-scrim" data-close-modal></div>
+  <div class="modal-shell">
+    <div class="modal-card">
+      <button class="modal-close" type="button" aria-label="Close" data-close-modal><svg><use href="#i-close"/></svg></button>
+
+      <p class="modal-when"><svg><use href="#i-cal"/></svg><span class="tok">[DAY], [DATE] · [TIME]</span></p>
+      <h3 id="modal-title">Lock in your free seat</h3>
+      <p class="intro">Fill in your details and we'll send the Zoom link to your WhatsApp and email.</p>
+
+      <!-- ============================================================ -->
+      <!-- FORM                                                         -->
+      <!-- Option A: swap this whole <form> for your CRM embed, e.g.     -->
+      <!-- <iframe src="https://api.yourcrm.com/widget/form/XXXX"        -->
+      <!--   style="display:block;width:100%;height:520px;border:none;   -->
+      <!--   border-radius:12px;background:#fff"></iframe>               -->
+      <!-- Option B: keep this form and set FORM_ENDPOINT in the script. -->
+      <!-- ============================================================ -->
+      <form class="cf-form" id="reg-form" novalidate>
+        <div class="cf-row">
+          <div class="cf-field">
+            <label for="f-name">Full name*</label>
+            <input type="text" id="f-name" name="name" placeholder="Your name" autocomplete="name" required>
+          </div>
+          <div class="cf-field">
+            <label for="f-phone">WhatsApp*</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="+60 12 345 6789" autocomplete="tel" required>
+          </div>
+        </div>
+
+        <div class="cf-row">
+          <div class="cf-field">
+            <label for="f-email">Email*</label>
+            <input type="email" id="f-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <div class="cf-field">
+            <label for="f-country">Country / city*</label>
+            <input type="text" id="f-country" name="country" placeholder="Kuala Lumpur, MY" autocomplete="country-name" required>
+          </div>
+        </div>
+
+        <div class="cf-field">
+          <label for="f-profile">Which best describes you?*</label>
+          <select id="f-profile" name="profile" required>
+            <option value="">Please select…</option>
+            <option>Business owner looking to add a new line</option>
+            <option>Already in wellness / healthcare</option>
+            <option>Sales or distribution professional</option>
+            <option>Exploring a career change</option>
+            <option>Investor / looking for a market opportunity</option>
+            <option>Just curious about ZÉLL-V</option>
+          </select>
+        </div>
+
+        <p class="cf-error" id="cf-error" role="alert"></p>
+
+        <button type="submit" class="btn btn-solid btn-lg">Secure my free seat <svg><use href="#i-arrow"/></svg></button>
+        <p class="cf-note">Seats are limited to 50. After you register we'll send the link to your WhatsApp and email.</p>
+      </form>
+
+      <div class="cf-success" id="cf-success">
+        <div class="tick"><svg><use href="#i-check"/></svg></div>
+        <h3 style="margin-top:18px">You're registered</h3>
+        <p>Check your WhatsApp and email — the Zoom link is on its way. Add
+          <span class="tok">[DAY], [DATE]</span> to your calendar now so you don't miss it.</p>
+        <button class="btn btn-glass btn-lg" style="margin-top:22px" data-close-modal>Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- reveal on scroll ---------- */
+  var reveals = document.querySelectorAll('.js-reveal');
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    reveals.forEach(function (el) { el.style.opacity = 1; });
+  } else {
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e, i) {
+        if (!e.isIntersecting) return;
+        e.target.style.opacity = '';
+        e.target.style.animationDelay = (i * 0.06) + 's';
+        e.target.classList.add('fade-in');
+        ro.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    reveals.forEach(function (el) { ro.observe(el); });
+  }
+
+  /* ---------- registration modal ---------- */
+  var modal = document.getElementById('reg-modal');
+  var lastFocused = null;
+
+  function openModal() {
+    lastFocused = document.activeElement;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    var first = modal.querySelector('input,select,button:not(.modal-close)');
+    if (first) first.focus();
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('[data-open-modal]').forEach(function (b) {
+    b.addEventListener('click', openModal);
+  });
+  document.querySelectorAll('[data-close-modal]').forEach(function (b) {
+    b.addEventListener('click', closeModal);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  /* ---------- form submit ---------- */
+  // SET THIS: your handler endpoint (CRM webhook, Formspree, serverless function…).
+  // Leave null to keep the demo behaviour (shows the success state without sending).
+  var FORM_ENDPOINT = null;
+
+  var form = document.getElementById('reg-form');
+  var errEl = document.getElementById('cf-error');
+  var okEl = document.getElementById('cf-success');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errEl.classList.remove('show');
+
+    if (!form.checkValidity()) {
+      errEl.textContent = 'Please complete every required field with valid details.';
+      errEl.classList.add('show');
+      var bad = form.querySelector(':invalid');
+      if (bad) bad.focus();
+      return;
+    }
+
+    var btn = form.querySelector('button[type="submit"]');
+    var label = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'Securing your seat…';
+
+    function done() { form.style.display = 'none'; okEl.classList.add('show'); }
+    function fail() {
+      btn.disabled = false;
+      btn.innerHTML = label;
+      errEl.textContent = 'Something went wrong. Please try again, or message us on WhatsApp.';
+      errEl.classList.add('show');
+    }
+
+    if (!FORM_ENDPOINT) { done(); return; }
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    }).then(function (r) { r.ok ? done() : fail(); }).catch(fail);
+  });
+})();
+</script>
+
+</body>
+</html>
