@@ -64,6 +64,7 @@
   .section{padding:var(--section-y) var(--gutter);position:relative;}
   .narrow{max-width:760px;margin-inline:auto;text-align:center;}
   .wide{max-width:1040px;margin-inline:auto;}
+  .wide-xl{max-width:1180px;}
   .section-alt{background:var(--bg-2);}
   .section-deep{background:var(--bg-3);}
   .section-dark{background:var(--ink);color:var(--bg);}
@@ -101,12 +102,6 @@
 
   /* ---- the repeating CTA block (after every section) ---- */
   .cta-block{margin-top:40px;display:grid;justify-items:center;gap:16px;}
-  .price-line{display:flex;align-items:baseline;justify-content:center;flex-wrap:wrap;gap:9px;font-size:14.5px;color:var(--ink-soft);}
-  .section-dark .price-line{color:rgba(251,248,242,.7);}
-  .price-was{font-family:var(--mono);text-decoration:line-through;color:var(--ink-faint);}
-  .section-dark .price-was{color:rgba(251,248,242,.5);}
-  .price-now{font-weight:700;color:var(--gold);font-size:15.5px;}
-  .section-dark .price-now{color:var(--gold-2);}
   .cta-note{font-size:12.5px;color:var(--ink-faint);line-height:1.6;max-width:44ch;}
   .section-dark .cta-note{color:rgba(251,248,242,.6);}
   .cta-note b{color:var(--alert);font-weight:700;}
@@ -243,6 +238,92 @@
   .tm-solutions h3{margin-top:12px;font-size:19px;}
   .tm-solutions p{margin-top:10px;font-size:13px;color:var(--ink-soft);line-height:1.65;}
 
+  /* ---- shared controls (from the business site) ---- */
+  .tm-arrow{width:44px;height:44px;border-radius:999px;border:1px solid var(--border);background:rgba(28,23,18,.04);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s ease, background .2s ease;}
+  .tm-arrow:hover{border-color:var(--gold);background:rgba(166,124,27,.1);}
+  .tm-arrow svg{width:16px;height:16px;}
+  .chip{font-size:13px;font-weight:700;padding:9px 16px;border-radius:999px;background:var(--glass);border:1px solid var(--border);color:var(--ink-soft);cursor:pointer;transition:all .2s ease;}
+  .chip[aria-pressed="true"]{background:rgba(166,124,27,.12);border-color:var(--gold);color:var(--gold);}
+  .chip:hover{border-color:var(--border-strong);}
+
+  /* ---- activity gallery ---- */
+  .ag-pillars{margin-top:32px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+  .ag-pill{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:999px;background:var(--glass);border:1px solid var(--border);font-size:13px;font-weight:600;color:var(--ink-soft);}
+  .ag-pill svg{width:15px;height:15px;color:var(--gold);}
+  .ag-wrap{position:relative;margin-top:36px;}
+  .ag-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:8px 0;scrollbar-width:none;}
+  .ag-track::-webkit-scrollbar{display:none;}
+  .ag-card{position:relative;flex:0 0 300px;scroll-snap-align:start;margin:0;aspect-ratio:4/3;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:#000;--s:1;transform:scale(var(--s));transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .3s ease;}
+  .ag-card:hover,.ag-card:focus-within{border-color:rgba(166,124,27,.5);}
+  .ag-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.72);transition:filter .4s ease, transform .6s ease;}
+  .ag-card:hover img{filter:brightness(1);transform:scale(1.05);}
+  .ag-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.75) 0%,transparent 45%);pointer-events:none;}
+  .ag-no{position:absolute;top:14px;left:16px;z-index:1;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.55);}
+  .ag-card figcaption{position:absolute;left:16px;right:16px;bottom:14px;z-index:1;font-size:14px;font-weight:700;color:#fff;letter-spacing:-.01em;}
+  .ag-arrows{display:flex;justify-content:flex-end;gap:8px;margin-top:18px;}
+  #ag-prev svg{transform:rotate(180deg);}
+  @media (prefers-reduced-motion: reduce){ .ag-card,.ag-card img{transition:none;} }
+
+  /* ---- global presence map ---- */
+  .map-shell{margin-top:44px;padding:clamp(16px,3vw,32px);}
+  .map-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-bottom:20px;}
+  .map-hint{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ink-soft);}
+  .map-hint svg{width:15px;height:15px;color:var(--gold);}
+  .map-legend{display:flex;flex-wrap:wrap;gap:16px;font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);}
+  .map-legend span{display:inline-flex;align-items:center;gap:8px;}
+  .lg{width:11px;height:11px;border-radius:999px;border:2.5px solid var(--gold);display:inline-block;}
+  .map-area{position:relative;}
+  .map-stage{position:relative;width:100%;aspect-ratio:360/142;}
+  .map-stage > img{position:absolute;inset:0;width:100%;height:100%;user-select:none;-webkit-user-drag:none;pointer-events:none;}
+  .map-pin{position:absolute;z-index:2;transform:translate(-50%,-50%);width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:999px;}
+  .map-pin .core{position:relative;z-index:1;width:15px;height:15px;border-radius:999px;background:var(--bg);border:3px solid var(--gold);box-shadow:0 0 0 5px rgba(166,124,27,.16);transition:transform .25s ease, background .25s ease;}
+  .map-pin .pulse{position:absolute;width:15px;height:15px;border-radius:999px;border:2px solid var(--gold);animation:pinPulse 2.4s ease-out infinite;}
+  .map-pin:hover .core,.map-pin.active .core{transform:scale(1.3);background:var(--gold);}
+  .map-pin .tip{position:absolute;bottom:calc(100% - 2px);left:50%;transform:translate(-50%,4px);white-space:nowrap;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.96);border:1px solid var(--border);color:var(--ink);opacity:0;pointer-events:none;transition:opacity .2s ease, transform .2s ease;}
+  .map-pin.edge-r .tip{left:auto;right:0;transform:translate(0,4px);}
+  .map-pin:hover .tip,.map-pin:focus-visible .tip{opacity:1;transform:translate(-50%,0);}
+  .map-pin.edge-r:hover .tip,.map-pin.edge-r:focus-visible .tip{transform:translate(0,0);}
+  .map-pin.active .tip{opacity:0;}
+  @keyframes pinPulse{0%{transform:scale(1);opacity:.85;}100%{transform:scale(3.2);opacity:0;}}
+
+  .region-card{position:absolute;z-index:5;left:0;top:0;width:min(320px,100%);padding:22px;border-radius:20px;background:rgba(255,255,255,.97);border:1px solid var(--border-strong);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 25px 50px -12px rgba(80,60,20,.35);text-align:left;}
+  .region-card[hidden]{display:none;}
+  .region-card.show{animation:rcIn .28s ease-out;}
+  @keyframes rcIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .rc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .rc-status{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);}
+  .rc-status i{width:7px;height:7px;border-radius:999px;background:var(--gold);}
+  .rc-name{margin-top:8px;font-size:22px;font-weight:700;}
+  .rc-count{margin-top:2px;font-size:13px;color:var(--ink-soft);}
+  .rc-close{flex:none;width:34px;height:34px;border-radius:999px;border:1px solid var(--border);background:rgba(28,23,18,.04);color:var(--ink-soft);display:flex;align-items:center;justify-content:center;cursor:pointer;}
+  .rc-close:hover{color:var(--ink);border-color:var(--border-strong);}
+  .rc-close svg{width:15px;height:15px;}
+  .rc-flags{margin-top:16px;padding:10px;border-radius:14px;background:rgba(28,23,18,.05);border:1px solid var(--border);display:flex;justify-content:center;}
+  .rc-flags img{max-width:100%;max-height:96px;width:auto;border-radius:6px;}
+  .rc-countries{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px;}
+  .rc-countries span{font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:rgba(28,23,18,.06);border:1px solid var(--border);color:var(--ink);}
+  .rc-outlets{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);}
+  .rc-outlets h4{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);}
+  .rc-outlets ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px;}
+  .rc-outlets li{display:flex;gap:8px;font-size:13px;color:var(--ink-soft);line-height:1.45;}
+  .rc-outlets li svg{width:14px;height:14px;flex:none;margin-top:2px;color:var(--gold);}
+  .region-tabs{margin-top:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+  @media (prefers-reduced-motion: reduce){ .map-pin .pulse{animation:none;opacity:0;} .region-card.show{animation:none;} }
+
+  /* ---- centres gallery ---- */
+  .gallery-grid{margin-top:36px;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:120px;grid-auto-flow:dense;gap:12px;}
+  .gallery-grid figure{margin:0;grid-column:span 2;grid-row:span 2;border-radius:16px;overflow:hidden;border:1px solid var(--border);position:relative;display:block;}
+  /* 6-col bento: one tall feature + two wide on top, three equal below — packs with no gaps */
+  .gallery-grid figure:nth-child(1){grid-column:span 3;grid-row:span 4;}
+  .gallery-grid figure:nth-child(2),.gallery-grid figure:nth-child(3){grid-column:span 3;grid-row:span 2;}
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .gallery-grid figure:hover img{transform:scale(1.06);}
+  .gallery-cap{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent);font-family:var(--mono);font-size:11px;color:#fff;}
+
+  /* ---- press ---- */
+  .press-card{margin-top:36px;padding:clamp(16px,3vw,32px);}
+  .press-card img{border-radius:14px;width:100%;}
+
   /* ---- final cta (dark) ---- */
   .final-card{margin:38px auto 0;max-width:560px;padding:clamp(26px,4vw,38px);text-align:left;}
   .final-details{list-style:none;margin:0;padding:0;display:grid;}
@@ -251,7 +332,6 @@
   .final-details svg{width:18px;height:18px;color:var(--gold-2);}
   .final-details .k{font-size:13.5px;color:rgba(251,248,242,.6);}
   .final-details .v{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--bg);text-align:right;}
-  .final-price{margin-top:20px;padding-top:18px;border-top:1px solid rgba(201,161,59,.25);}
   .sign-off{margin-top:34px;}
   .sign-off .line{font-size:clamp(19px,2.4vw,26px);font-weight:600;letter-spacing:-.02em;color:var(--gold-2);}
   .sign-off .who{margin-top:9px;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:rgba(251,248,242,.6);}
@@ -319,6 +399,26 @@
   .section-dark .tok{background:rgba(201,161,59,.22);border-bottom-color:var(--gold-2);}
 
   /* ---- responsive ---- */
+  @media (max-width:1024px){
+    .region-card{position:relative;width:auto;margin-top:18px;}
+    .map-pin .tip{display:none;}
+    .gallery-grid{grid-template-columns:repeat(4,1fr);}
+    .gallery-grid figure:nth-child(1){grid-column:span 2;grid-row:span 4;}
+    .gallery-grid figure:nth-child(2),.gallery-grid figure:nth-child(3){grid-column:span 2;grid-row:span 2;}
+    .gallery-grid figure:nth-child(6){grid-column:span 4;grid-row:span 2;}
+  }
+  @media (max-width:720px){
+    .ag-card{flex-basis:220px;}
+    .ag-arrows{display:none;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px;}
+    .gallery-grid figure,.gallery-grid figure:nth-child(n){grid-column:span 1;grid-row:span 1;}
+    .map-shell{padding:14px;}
+    .map-bar{justify-content:center;text-align:center;}
+    .map-pin{width:30px;height:30px;}
+    .map-pin .core,.map-pin .pulse{width:11px;height:11px;}
+    .map-pin .core{border-width:2.5px;box-shadow:0 0 0 3px rgba(166,124,27,.16);}
+    .region-card{padding:18px;}
+  }
   @media (max-width:900px){
     .tm-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
     .split,.split.reverse{grid-template-columns:minmax(0,1fr);gap:28px;}
@@ -345,6 +445,10 @@
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6L12 2Z"/></symbol>
   <symbol id="i-crown" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4 3 5-6 5 6 4-3-2 11H5L3 8Z"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6M10 3v6l-5.5 9.5A1.5 1.5 0 0 0 5.8 21h12.4a1.5 1.5 0 0 0 1.3-2.5L14 9V3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 9l10-5 10 5-10 5-10-5Z" stroke-linejoin="round"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12l4-4 4 2 4-2 4 2 4-2M8 10l3 3-2 2M16 10l-3 3 2 2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/></symbol>
   <symbol id="i-microscope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8M3 22h18M14 22a7 7 0 1 0 0-14h-1M9 14h2M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2ZM12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></symbol>
   <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
@@ -392,7 +496,7 @@
     </div>
 
     <div class="logistics fade-in d3">
-      <span class="li"><svg><use href="#i-cal"/></svg><span class="mono tok">[DAY], [DATE] · [TIME]</span></span>
+      <span class="li"><svg><use href="#i-cal"/></svg><span class="mono">Saturday, 3 October · 8:00 PM – 10:00 PM</span></span>
       <span class="dot"></span>
       <span class="li"><svg><use href="#i-screen"/></svg><span>Online via Zoom</span></span>
       <span class="dot"></span>
@@ -400,12 +504,6 @@
     </div>
 
     <div class="cta-block fade-in d3">
-      <p class="price-line">
-        <span>Normally</span>
-        <span class="price-was tok">RM297</span>
-        <svg style="width:14px;height:14px;color:var(--gold)"><use href="#i-arrow"/></svg>
-        <span class="price-now">Free for the first 50 registrations</span>
-      </p>
       <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
         Claim my free seat — limited places <svg><use href="#i-arrow"/></svg>
       </button>
@@ -478,16 +576,10 @@
       <p class="sub">It's simply what happens when you're building without a system behind you.</p>
 
       <div class="cta-block" style="margin-top:28px">
-        <p class="price-line">
-          <span>Normally</span>
-          <span class="price-was tok">RM297</span>
-          <svg style="width:14px;height:14px;color:var(--gold)"><use href="#i-arrow"/></svg>
-          <span class="price-now">Free for the first 50 registrations</span>
-        </p>
         <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
           Claim my free seat — limited places <svg><use href="#i-arrow"/></svg>
         </button>
-        <p class="cta-note"><span class="tok">[DAY], [DATE] · [TIME]</span> · Online via Zoom · No replay</p>
+        <p class="cta-note">Saturday, 3 October · 8:00 PM – 10:00 PM · Online via Zoom · No replay</p>
       </div>
     </div>
   </div>
@@ -874,6 +966,111 @@
 </section>
 
 <!-- ============================================================ -->
+<!-- 8a · ACTIVITY IMAGE GALLERY  (from the business site)        -->
+<!-- ============================================================ -->
+<section class="section section-alt" id="activity">
+  <div class="wide">
+    <div class="narrow js-reveal">
+      <p class="eyebrow">Activity Image Gallery</p>
+      <h2 class="h-title">Continuous Spreading <span class="gold">Culture of Health</span></h2>
+      <div class="rule"></div>
+      <p class="lede">By providing our business partners with proper knowledge, we help you to understand the benefits of
+        ZÉLL-V. We achieve all these by organizing yearly seminars, face-to-face consultations with medical professionals,
+        and various other methods.</p>
+    </div>
+
+    <div class="ag-pillars js-reveal">
+      <div class="ag-pill"><svg><use href="#i-cap"/></svg>Yearly Seminars</div>
+      <div class="ag-pill"><svg><use href="#i-shake"/></svg>Face-to-Face Consultations</div>
+      <div class="ag-pill"><svg><use href="#i-flask"/></svg>Professional College Academy</div>
+    </div>
+
+    <div class="ag-wrap js-reveal">
+      <div class="ag-track" id="ag-track">
+        <figure class="ag-card"><span class="ag-no">01</span><img src="assets/images/imageGallery/30-scaled-561x345.jpg" alt="Cellular Therapy Symposium, 8 April 2026 — group photo" loading="lazy"><figcaption>Cellular Therapy Symposium</figcaption></figure>
+        <figure class="ag-card"><span class="ag-no">02</span><img src="assets/images/imageGallery/DSC_8189-scaled-561x374.jpg" alt="Speaker briefing the audience at the Cellular Therapy Symposium" loading="lazy"><figcaption>Symposium Briefing</figcaption></figure>
+        <figure class="ag-card"><span class="ag-no">03</span><img src="assets/images/imageGallery/DSC_9139-scaled-561x374.jpg" alt="Panel of speakers on stage at the Cellular Therapy Symposium" loading="lazy"><figcaption>Panel of Speakers</figcaption></figure>
+        <figure class="ag-card"><span class="ag-no">04</span><img src="assets/images/imageGallery/DSC00-285-scaled-561x375.jpg" alt="Panel discussion at the International Cellular Therapy Symposium, 28 Oct 2023" loading="lazy"><figcaption>Symposium Panel Discussion</figcaption></figure>
+        <figure class="ag-card"><span class="ag-no">05</span><img src="assets/images/imageGallery/DSC_8015-scaled-561x374.jpg" alt="Wide view of the symposium ballroom filled with attendees" loading="lazy"><figcaption>Symposium Ballroom</figcaption></figure>
+        <figure class="ag-card"><span class="ag-no">06</span><img src="assets/images/imageGallery/DSC_072-scaled-561x374.jpg" alt="Seminar audience listening to a speaker" loading="lazy"><figcaption>Seminar Audience</figcaption></figure>
+        <figure class="ag-card"><span class="ag-no">07</span><img src="assets/images/imageGallery/DSC_8057-scaled-561x374.jpg" alt="Seminar presentation with dual screens" loading="lazy"><figcaption>Seminar Presentation</figcaption></figure>
+        <figure class="ag-card"><span class="ag-no">08</span><img src="assets/images/imageGallery/DSC_143-scaled-561x374.jpg" alt="Partners receiving certificates at a Cellular Therapy Symposium" loading="lazy"><figcaption>Certificate Presentation</figcaption></figure>
+        <figure class="ag-card"><span class="ag-no">09</span><img src="assets/images/imageGallery/20231101_135631-561x432.jpg" alt="Team portrait at a ZÉLL-V Cellular Therapy event" loading="lazy"><figcaption>Cellular Therapy Event</figcaption></figure>
+        <figure class="ag-card"><span class="ag-no">10</span><img src="assets/images/imageGallery/DSC_7830-scaled-561x374.jpg" alt="Group photo with partners at a ZÉLL-V event" loading="lazy"><figcaption>Partner Meeting</figcaption></figure>
+        <figure class="ag-card"><span class="ag-no">11</span><img src="assets/images/imageGallery/DSC_6043-scaled-561x374.jpeg" alt="Celebration event with ZÉLL-V product boxes on display" loading="lazy"><figcaption>Celebration Event</figcaption></figure>
+        <figure class="ag-card"><span class="ag-no">12</span><img src="assets/images/imageGallery/IMG_20241011_163633-scaled-561x422.jpg" alt="ZÉLL-V exhibition booth at a trade show" loading="lazy"><figcaption>Exhibition Booth</figcaption></figure>
+      </div>
+      <div class="ag-arrows">
+        <button type="button" class="tm-arrow" id="ag-prev" aria-label="Scroll gallery left"><svg><use href="#i-arrow"/></svg></button>
+        <button type="button" class="tm-arrow" id="ag-next" aria-label="Scroll gallery right"><svg><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 8b · WORLDWIDE OUTLETS  (from the business site)             -->
+<!-- ============================================================ -->
+<section class="section" id="presence">
+  <div class="wide wide-xl">
+    <div class="narrow js-reveal">
+      <p class="eyebrow">Worldwide Outlets</p>
+      <h2 class="h-title">ZÉLL-V <span class="gold">Global Presence</span></h2>
+      <div class="rule"></div>
+      <p class="lede">Today, ZÉLL-V is an international healthcare company committed to providing the most effective
+        cytotherapy-based products and quality services, enabling customers to achieve health, vitality, beauty and quality
+        life. Our operations span Europe, the United States and Asia, with outlets in Germany, Switzerland, the United
+        States, Singapore, Malaysia, Hong Kong, China, Macau, Taiwan, Brunei, Vietnam, Indonesia, Lebanon and the Middle
+        East — rapid growth driven by our global development direction and unique business model.</p>
+    </div>
+
+    <div class="glass map-shell js-reveal">
+      <div class="map-bar">
+        <p class="map-hint"><svg><use href="#i-pin"/></svg>Tap a marker to explore a region</p>
+        <div class="map-legend">
+          <span><i class="lg"></i>Active outlets &amp; markets</span>
+        </div>
+      </div>
+      <div class="map-area">
+        <div class="map-stage" id="map-stage">
+          <img src="assets/images/world-dots.svg" alt="" aria-hidden="true">
+        </div>
+        <div class="region-card" id="region-card" role="region" aria-live="polite" aria-labelledby="rc-name" hidden></div>
+      </div>
+      <div class="region-tabs" id="region-tabs" role="group" aria-label="Choose a region"></div>
+    </div>
+
+    <div class="narrow js-reveal" style="margin-top:64px">
+      <p class="eyebrow">Our Centres</p>
+      <h2 class="h-title">Signature wellness spaces <span class="gold">across our markets</span></h2>
+    </div>
+    <div class="gallery-grid js-reveal">
+      <figure><img src="assets/images/centres/v-wellness.jpg" alt="ZÉLL-V Wellness reception lounge" loading="lazy"><figcaption class="gallery-cap">V Wellness</figcaption></figure>
+      <figure><img src="assets/images/centres/v-clinic.jpg" alt="ZÉLL-V Clinic reception" loading="lazy"><figcaption class="gallery-cap">V Clinic</figcaption></figure>
+      <figure><img src="assets/images/centres/consultation-bar.jpg" alt="ZÉLL-V consultation bar" loading="lazy"><figcaption class="gallery-cap">Consultation Bar</figcaption></figure>
+      <figure><img src="assets/images/centres/signature-lounge.jpg" alt="ZÉLL-V lifestyle lounge with city skyline" loading="lazy"><figcaption class="gallery-cap">Signature Lounge</figcaption></figure>
+      <figure><img src="assets/images/centres/reception.jpg" alt="ZÉLL-V reception desk" loading="lazy"><figcaption class="gallery-cap">Reception</figcaption></figure>
+      <figure><img src="assets/images/centres/concierge.jpg" alt="ZÉLL-V outlet concierge greeting a guest" loading="lazy"><figcaption class="gallery-cap">Concierge</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 8c · AS FEATURED IN  (from the business site)                -->
+<!-- ============================================================ -->
+<section class="section section-alt">
+  <div class="wide">
+    <div class="narrow js-reveal">
+      <p class="eyebrow">As Featured In</p>
+      <h2 class="h-title">Recognised across <span class="gold">global media</span></h2>
+    </div>
+    <div class="glass press-card js-reveal">
+      <img src="assets/images/Featuring.jpg" alt="ZÉLL-V press features: Africa Health, AirAsia, Cosmoprof Asia Hong Kong, Arab Health, Hurun Report, SilverKris, 3Sixty and Sands Style" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
 <!-- 9 · FINAL CTA                                                -->
 <!-- ============================================================ -->
 <section class="section section-dark">
@@ -887,21 +1084,12 @@
 
     <div class="glass final-card js-reveal">
       <ul class="final-details">
-        <li><svg><use href="#i-cal"/></svg><span class="k">Date</span><span class="v tok">[DAY], [DATE]</span></li>
-        <li><svg><use href="#i-clock"/></svg><span class="k">Time</span><span class="v tok">[TIME]</span></li>
+        <li><svg><use href="#i-cal"/></svg><span class="k">Date</span><span class="v">Saturday, 3 October 2026</span></li>
+        <li><svg><use href="#i-clock"/></svg><span class="k">Time</span><span class="v">8:00 PM – 10:00 PM</span></li>
         <li><svg><use href="#i-screen"/></svg><span class="k">Where</span><span class="v">Zoom — link on registration</span></li>
         <li><svg><use href="#i-ticket"/></svg><span class="k">Seats</span><span class="v">First 50 only</span></li>
         <li><svg><use href="#i-alert"/></svg><span class="k">Replay</span><span class="v">None</span></li>
       </ul>
-
-      <div class="final-price">
-        <p class="price-line">
-          <span>Normally</span>
-          <span class="price-was tok">RM297</span>
-          <svg style="width:14px;height:14px;color:var(--gold-2)"><use href="#i-arrow"/></svg>
-          <span class="price-now">Now completely free</span>
-        </p>
-      </div>
     </div>
 
     <div class="cta-block js-reveal">
@@ -954,7 +1142,7 @@
     <div class="modal-card">
       <button class="modal-close" type="button" aria-label="Close" data-close-modal><svg><use href="#i-close"/></svg></button>
 
-      <p class="modal-when"><svg><use href="#i-cal"/></svg><span class="tok">[DAY], [DATE] · [TIME]</span></p>
+      <p class="modal-when"><svg><use href="#i-cal"/></svg><span>Saturday, 3 October · 8:00 PM – 10:00 PM</span></p>
       <h3 id="modal-title">Lock in your free seat</h3>
       <p class="intro">Fill in your details and we'll send the Zoom link to your WhatsApp and email.</p>
 
@@ -1012,7 +1200,7 @@
         <div class="tick"><svg><use href="#i-check"/></svg></div>
         <h3 style="margin-top:18px">You're registered</h3>
         <p>Check your WhatsApp and email — the Zoom link is on its way. Add
-          <span class="tok">[DAY], [DATE]</span> to your calendar now so you don't miss it.</p>
+          Saturday, 3 October to your calendar now so you don't miss it.</p>
         <button class="btn btn-glass btn-lg" style="margin-top:22px" data-close-modal>Close</button>
       </div>
 
@@ -1068,6 +1256,151 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
   });
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- activity gallery: arrow scroll + magnetic hover (from the business site) ---------- */
+  var agTrack = document.getElementById('ag-track');
+  if (agTrack) {
+    var agCards = Array.prototype.slice.call(agTrack.querySelectorAll('.ag-card'));
+    var agStep = function () { return (agCards[0].offsetWidth + 16) * 2; };
+    document.getElementById('ag-prev').addEventListener('click', function () {
+      agTrack.scrollBy({ left: -agStep(), behavior: reduced ? 'auto' : 'smooth' });
+    });
+    document.getElementById('ag-next').addEventListener('click', function () {
+      agTrack.scrollBy({ left: agStep(), behavior: reduced ? 'auto' : 'smooth' });
+    });
+    if (!reduced && window.matchMedia('(hover:hover)').matches) {
+      agTrack.addEventListener('mousemove', function (e) {
+        agCards.forEach(function (card) {
+          var r = card.getBoundingClientRect();
+          var d = Math.abs(e.clientX - (r.left + r.width / 2));
+          card.style.setProperty('--s', (d < 260 ? 1 + (1 - d / 260) * 0.08 : 1).toFixed(3));
+        });
+      });
+      agTrack.addEventListener('mouseleave', function () {
+        agCards.forEach(function (card) { card.style.setProperty('--s', 1); });
+      });
+    }
+  }
+
+  /* ---------- global presence map (from the business site) ---------- */
+  var FLAGS = 'assets/images/flags/';
+  var REGIONS = [
+    { id: 'north-america',   name: 'North America',   lon: -98,   lat: 39,   countries: ['United States'], outlets: [], flag: 'country-North-America-300x122.png' },
+    { id: 'europe',          name: 'Europe',          lon: 8.5,   lat: 47,   countries: ['Germany', 'Switzerland'], outlets: [], flag: 'country-Europe-300x122.png' },
+    { id: 'middle-east',     name: 'Middle East',     lon: 35.8,  lat: 33.9, countries: ['Lebanon'], outlets: [], flag: 'country-Middle-East-1-300x141.png' },
+    { id: 'east-asia',       name: 'East Asia',       lon: 114.2, lat: 24,   countries: ['Hong Kong', 'China', 'Macau', 'Taiwan'], outlets: ['Hong Kong', 'Macau'], flag: 'country-East-Asia-1-300x263.png' },
+    { id: 'asean',           name: 'ASEAN',           lon: 103.8, lat: 2,    countries: ['Singapore', 'Malaysia', 'Brunei', 'Vietnam', 'Indonesia'], outlets: ['Marina Bay Sands, Singapore', 'Ngee Ann City, Singapore', 'Pavilion Kuala Lumpur, Malaysia', 'Brunei', 'Vietnam'], flag: 'country-ASEAN-3-229x300.png' },
+    { id: 'southern-africa', name: 'Southern Africa', lon: 25,    lat: -26,  countries: ['South Africa'], outlets: [], flag: 'country-Africa-1-300x122.png' },
+    { id: 'oceania',         name: 'Oceania',         lon: 146,   lat: -30,  countries: ['New Zealand'], outlets: [], flag: 'country-Oceania-300x122.png' }
+  ];
+
+  var stage = document.getElementById('map-stage');
+  var regionCard = document.getElementById('region-card');
+  var regionTabs = document.getElementById('region-tabs');
+  if (stage && regionCard && regionTabs) {
+    var stackedMQ = window.matchMedia('(max-width:1024px)');
+    var pins = {}, regionChips = {}, activeRegion = null;
+
+    // Must match the crop of world-dots.svg (lon -180..180, lat 84..-58).
+    var mapPos = function (r) { return { x: (r.lon + 180) / 360 * 100, y: (84 - r.lat) / 142 * 100 }; };
+    var findRegion = function (id) { return REGIONS.filter(function (r) { return r.id === id; })[0]; };
+
+    var renderRegion = function (r) {
+      var html =
+        '<div class="rc-top"><div>' +
+          '<span class="rc-status"><i></i>Active outlets</span>' +
+          '<h3 class="rc-name" id="rc-name">' + r.name + '</h3>' +
+          '<p class="rc-count">' + r.countries.length + (r.countries.length === 1 ? ' market' : ' markets') + '</p>' +
+        '</div><button type="button" class="rc-close" aria-label="Close region details"><svg><use href="#i-close"/></svg></button></div>';
+      if (r.flag) html += '<div class="rc-flags"><img src="' + FLAGS + r.flag + '" alt="Flags of ' + r.name + '"></div>';
+      html += '<div class="rc-countries">' + r.countries.map(function (c) { return '<span>' + c + '</span>'; }).join('') + '</div>';
+      if (r.outlets.length) {
+        html += '<div class="rc-outlets"><h4>Flagship outlets</h4><ul>' +
+          r.outlets.map(function (o) { return '<li><svg><use href="#i-pin"/></svg>' + o + '</li>'; }).join('') + '</ul></div>';
+      }
+      regionCard.innerHTML = html;
+      regionCard.querySelector('.rc-close').addEventListener('click', closeRegion);
+    };
+
+    var mapArea = stage.parentNode;
+    var placeRegionCard = function () {
+      mapArea.style.minHeight = '';
+      if (!activeRegion || regionCard.hidden) return;
+      if (stackedMQ.matches) { regionCard.style.left = ''; regionCard.style.top = ''; return; }
+      var p = mapPos(findRegion(activeRegion));
+      var sw = stage.clientWidth, sh = stage.clientHeight;
+      var cw = regionCard.offsetWidth, ch = regionCard.offsetHeight;
+      // Tall cards (e.g. ASEAN) can exceed the map's height — grow the frame so the card stays inside it.
+      if (ch > sh) { mapArea.style.minHeight = ch + 'px'; sh = ch; }
+      var px = p.x / 100 * sw, py = p.y / 100 * sh, gap = 30;
+      regionCard.style.left = ((px + gap + cw <= sw) ? px + gap : Math.max(0, px - gap - cw)) + 'px';
+      regionCard.style.top = Math.max(0, Math.min(py - ch / 2, sh - ch)) + 'px';
+    };
+
+    var setRegionState = function (id) {
+      Object.keys(pins).forEach(function (k) {
+        var on = k === id;
+        pins[k].classList.toggle('active', on);
+        pins[k].setAttribute('aria-expanded', on ? 'true' : 'false');
+        regionChips[k].setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    };
+
+    var openRegion = function (id) {
+      activeRegion = id;
+      setRegionState(id);
+      renderRegion(findRegion(id));
+      regionCard.hidden = false;
+      regionCard.classList.remove('show');
+      void regionCard.offsetWidth;
+      regionCard.classList.add('show');
+      placeRegionCard();
+    };
+
+    var closeRegion = function () {
+      activeRegion = null;
+      regionCard.hidden = true;
+      mapArea.style.minHeight = '';
+      setRegionState(null);
+    };
+
+    REGIONS.forEach(function (r) {
+      var p = mapPos(r);
+      var pin = document.createElement('button');
+      pin.type = 'button';
+      pin.className = 'map-pin' + (p.x > 85 ? ' edge-r' : '');
+      pin.style.left = p.x + '%';
+      pin.style.top = p.y + '%';
+      pin.setAttribute('aria-label', r.name + ', active outlets');
+      pin.setAttribute('aria-expanded', 'false');
+      pin.setAttribute('aria-controls', 'region-card');
+      pin.innerHTML = '<span class="pulse"></span><span class="core"></span><span class="tip">' + r.name + '</span>';
+      pin.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (activeRegion === r.id) closeRegion(); else openRegion(r.id);
+      });
+      stage.appendChild(pin);
+      pins[r.id] = pin;
+
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'chip';
+      chip.textContent = r.name;
+      chip.setAttribute('aria-pressed', 'false');
+      chip.addEventListener('click', function () { openRegion(r.id); });
+      regionTabs.appendChild(chip);
+      regionChips[r.id] = chip;
+    });
+
+    stage.addEventListener('click', closeRegion);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && activeRegion && !modal.classList.contains('open')) closeRegion();
+    });
+    window.addEventListener('resize', placeRegionCard);
+    openRegion('asean');
+  }
 
   /* ---------- form submit ---------- */
   // SET THIS: your handler endpoint (CRM webhook, Formspree, serverless function…).
