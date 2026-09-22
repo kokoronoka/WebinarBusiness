@@ -179,17 +179,12 @@
   .section-dark p.lede,.section-dark .closing{color:rgba(251,248,242,.78);}
   .section-dark .closing strong{color:var(--gold-2);}
   .section-dark .eyebrow{color:var(--gold-2);}
-  .cred-stats{margin-top:40px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}
-  .cred-stat{padding:26px 18px;text-align:center;transition:border-color .25s ease, transform .25s ease;}
-  .cred-stat:hover{border-color:rgba(201,161,59,.5);transform:translateY(-3px);}
-  .cred-fig{font-family:var(--mono);font-size:clamp(26px,3.4vw,38px);font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--gold-2);font-variant-numeric:tabular-nums;}
-  .cred-lbl{margin-top:11px;font-size:12px;font-weight:500;line-height:1.5;color:rgba(251,248,242,.7);}
-  .cred-note{margin-top:16px;padding:26px 30px;}
-  .cred-note p{font-size:14.5px;line-height:1.75;color:rgba(251,248,242,.78);}
-  .cred-note strong{color:var(--gold-2);font-weight:700;}
-  .media-row{margin-top:30px;display:flex;flex-wrap:wrap;justify-content:center;gap:9px;}
-  .media-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;border:1px solid rgba(201,161,59,.3);background:rgba(255,255,255,.04);font-size:12.5px;font-weight:600;color:rgba(251,248,242,.75);}
-  .media-chip svg{width:13px;height:13px;color:var(--gold-2);}
+  .cred-fig{font-family:var(--mono);font-size:clamp(26px,3.4vw,38px);font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums;}
+  .section-dark .curr-row{border-bottom-color:rgba(201,161,59,.18);}
+  .section-dark .curr-no{border-color:rgba(201,161,59,.4);color:var(--gold-2);}
+  .section-dark .curr-row:hover .curr-no{background:var(--gold-2);color:var(--ink);}
+  .section-dark .curr-row p{color:rgba(251,248,242,.78);}
+  .section-dark .curr-row p strong{color:var(--gold-2);}
 
   /* ---- speaker ---- */
   .split{margin-top:52px;display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(28px,5vw,60px);align-items:center;text-align:left;}
@@ -216,12 +211,16 @@
   .ba-tag{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:7px 13px;border-radius:999px;}
   .ba-tag.before{color:var(--alert);background:rgba(154,59,47,.08);border:1px solid rgba(154,59,47,.25);}
   .ba-tag.after{color:var(--gold);background:rgba(166,124,27,.1);border:1px solid rgba(166,124,27,.3);}
-  .ba-card ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:15px;}
-  .ba-card li{display:flex;gap:13px;font-size:14.5px;line-height:1.6;color:var(--ink-soft);}
-  .ba-ico{flex:none;width:22px;height:22px;border-radius:999px;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .ba-card ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:20px;}
+  .ba-card li{display:flex;gap:13px;font-size:14px;line-height:1.6;color:var(--ink-soft);}
+  .ba-card li b{display:block;font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:4px;letter-spacing:-.01em;}
+  .ba-ico{flex:none;width:22px;height:22px;border-radius:999px;display:flex;align-items:center;justify-content:center;margin-top:2px;}
   .ba-ico.x{background:rgba(154,59,47,.08);border:1px solid rgba(154,59,47,.25);color:var(--alert);}
   .ba-ico.c{background:rgba(166,124,27,.1);border:1px solid rgba(166,124,27,.3);color:var(--gold);}
   .ba-ico svg{width:12px;height:12px;}
+  .shift-row{margin-top:36px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+  .shift-item{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:var(--ink-soft);border:1px solid var(--border);background:rgba(28,23,18,.04);border-radius:999px;padding:9px 16px;}
+  .shift-item svg{width:13px;height:13px;color:var(--gold);flex:none;}
 
   /* ---- testimonials ---- */
   .tm-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;text-align:left;}
@@ -321,7 +320,6 @@
 
   /* ---- responsive ---- */
   @media (max-width:900px){
-    .cred-stats{grid-template-columns:repeat(2,minmax(0,1fr));}
     .tm-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
     .split,.split.reverse{grid-template-columns:minmax(0,1fr);gap:28px;}
     .split.reverse > .about-photo{order:0;}
@@ -502,48 +500,49 @@
   <div class="narrow">
     <div class="js-reveal">
       <p class="eyebrow">The Agenda</p>
-      <h2 class="h-title">In this <span class="gold">2-hour</span> free masterclass, we'll hold nothing back</h2>
+      <h2 class="h-title">In This Class, <span class="gold">I Will Hold Nothing Back.</span></h2>
       <div class="rule"></div>
+      <p class="lede">I'll share what we've learned from building and growing a Health &amp; Wellness brand over the years —
+        not just the success story, but the thinking, systems and lessons behind it.</p>
+      <p class="lede" style="margin-top:14px;font-weight:600;color:var(--ink)">Here are some of the things we'll openly share:</p>
     </div>
 
     <div class="curr">
       <article class="curr-row js-reveal">
         <span class="curr-no">01</span>
-        <h3>Where the $4 trillion actually sits</h3>
-        <p>Personal care, beauty and anti-ageing alone account for <strong>$1,083 billion</strong> — roughly 27% of the
-          wellness industry. Which slice a partner can realistically own, and which to avoid.</p>
+        <h3>How to Build a Sustainable Health &amp; Wellness Brand</h3>
+        <p>Why a good product is only the beginning — and how <strong>Medical, Nutrition, Education, Marketing, Sales and
+          Events</strong> come together to build a sustainable business ecosystem.</p>
       </article>
       <article class="curr-row js-reveal">
         <span class="curr-no">02</span>
-        <h3>The science you get to stand on</h3>
-        <p>Why 70+ years of Swiss and German cytotherapy research, a 99%-pure NMN formulation and an exclusive placenta
-          filtration technique are a <strong>moat competitors can't copy</strong> — and how to explain it in one sentence.</p>
+        <h3>How to Get Your First Customers</h3>
+        <p>Where do your first customers really come from? How do you find the right audience, build trust and
+          <strong>turn your first conversations into long-term customer relationships</strong>?</p>
       </article>
       <article class="curr-row js-reveal">
         <span class="curr-no">03</span>
-        <h3>The four-solution portfolio</h3>
-        <p>NMN Anti-Aging Concoction, Platinum Plus sheep placenta, PhytoGreen cellular detox and the wellness retreats —
-          and how they <strong>stack into repeat revenue</strong> instead of one-off sales.</p>
+        <h3>How to Turn Health Education into Business</h3>
+        <p>How do you educate customers, create value and <strong>build trust without simply competing on price</strong>?</p>
       </article>
       <article class="curr-row js-reveal">
         <span class="curr-no">04</span>
-        <h3>Retreats as your premium tier</h3>
-        <p>How the Men's Vitality and Women's Rejuvenation retreats, plus focused plans for skin, detox, bone &amp; joint and
-          circulation, let you serve clients at a <strong>price point most wellness businesses never reach</strong>.</p>
+        <h3>How to Build a Business System That Can Grow</h3>
+        <p>How do you move from selling by yourself to building a business supported by
+          <strong>training, marketing, professional expertise, sales systems and customer support</strong>?</p>
       </article>
       <article class="curr-row js-reveal">
         <span class="curr-no">05</span>
-        <h3>The support system behind you</h3>
-        <p>The Professional College Academy, cellular therapy symposiums, partner certification, medical consultations and
-          the reward structure — <strong>what you're actually handed on day one</strong>.</p>
-      </article>
-      <article class="curr-row js-reveal">
-        <span class="curr-no">06</span>
-        <h3>How to start, and what it takes</h3>
-        <p>Partnership vs. distributorship, which markets are open, what ZÉLL-V looks for in a partner, and the honest
-          answer to <strong>"is this right for me?"</strong> — including who it isn't for.</p>
+        <h3>What It Really Takes to Build an International Wellness Business</h3>
+        <p>From positioning and market entry to localisation, partnerships and business strategy —
+          <strong>what should you think about before taking a Wellness brand into a new market</strong>?</p>
       </article>
     </div>
+
+    <p class="closing js-reveal" style="text-align:center">
+      No theory. No holding back. <strong>Just the lessons, strategies and experiences we've gained from building the
+      business.</strong>
+    </p>
 
     <div class="cta-block js-reveal">
       <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
@@ -560,57 +559,60 @@
   <div class="wide">
     <div class="narrow js-reveal">
       <p class="eyebrow">Why ZÉLL-V</p>
-      <h2 class="h-title">Why partners in <span style="color:var(--gold-2)">14+ markets</span> choose ZÉLL-V</h2>
+      <h2 class="h-title">Why Do Partners in <span style="color:var(--gold-2)">14 Markets</span> Choose ZÉLL-V?</h2>
       <div class="rule"></div>
-      <p class="lede">ZÉLL-V was founded to close the gap conventional medicine leaves open — the slow erosion of vitality
-        that comes with premature ageing and chronic degenerative disease. It unites Swiss and German cytotherapy research,
-        premium biotechnology and luxury wellness retreats into one business you can build a legacy on.</p>
+      <p class="lede">Building a Health &amp; Wellness business in a new market is never just about finding a good product.</p>
+      <p class="lede" style="margin-top:14px">Partners need a brand they can trust, a proven business model, professional
+        support, and a system that helps them build step by step.</p>
+      <p class="lede" style="margin-top:14px">That is why partners across 14 markets have chosen to explore and work with
+        ZÉLL-V.</p>
     </div>
 
-    <div class="cred-stats">
-      <div class="glass cred-stat js-reveal">
-        <div class="cred-fig">70+</div>
-        <p class="cred-lbl">Years of Swiss &amp; German research</p>
-      </div>
-      <div class="glass cred-stat js-reveal">
-        <div class="cred-fig">99%</div>
-        <p class="cred-lbl">NMN formulation purity</p>
-      </div>
-      <div class="glass cred-stat js-reveal">
-        <div class="cred-fig">16</div>
-        <p class="cred-lbl">Doctors on the medical advisory panel</p>
-      </div>
-      <div class="glass cred-stat js-reveal">
-        <div class="cred-fig">14+</div>
-        <p class="cred-lbl">Markets across Europe, US &amp; Asia</p>
+    <div class="wide">
+      <div class="curr js-reveal" style="margin-top:48px">
+        <article class="curr-row js-reveal">
+          <span class="curr-no">01</span>
+          <h3>A Brand Built Over Time</h3>
+          <p>With more than <strong>20 years of experience</strong>, ZÉLL-V has grown from a wellness brand into an
+            integrated Health &amp; Wellness ecosystem — bringing together products, professional expertise, education and
+            customer experience.</p>
+        </article>
+        <article class="curr-row js-reveal">
+          <span class="curr-no">02</span>
+          <h3>More Than Just Products</h3>
+          <p>A good product is only the beginning. Our ecosystem brings together
+            <strong>Medical, Nutrition, Education, Marketing, Sales and Events</strong> — giving partners access to a
+            broader support system instead of having to build everything from zero.</p>
+        </article>
+        <article class="curr-row js-reveal">
+          <span class="curr-no">03</span>
+          <h3>A Business Model That Can Be Adapted</h3>
+          <p>Every market is different. We believe successful international growth is not about simply copying one market,
+            but <strong>understanding the brand, the system and the principles</strong> — then adapting them to local
+            customers and market conditions.</p>
+        </article>
+        <article class="curr-row js-reveal">
+          <span class="curr-no">04</span>
+          <h3>Professional Knowledge &amp; Education</h3>
+          <p>Health &amp; Wellness is an industry built on trust. Through professional knowledge, continuous education and
+            structured training, partners can develop the <strong>understanding and confidence needed to communicate
+            responsibly</strong> with their customers.</p>
+        </article>
+        <article class="curr-row js-reveal">
+          <span class="curr-no">05</span>
+          <h3>A Long-Term Partnership</h3>
+          <p>We are not simply looking for distributors. We are looking for people who want to build a Health &amp;
+            Wellness business for the long term — with the <strong>support, knowledge, systems and experience</strong> of
+            an established international brand behind them.</p>
+        </article>
       </div>
     </div>
 
-    <div class="narrow">
-      <div class="glass cred-note js-reveal">
-        <p>ZÉLL-V is developed and supported by renowned cytotherapy specialists across Switzerland, Germany and beyond —
-          including members of the <strong>International Association for Organ Cell Therapy Specialist (IAOSS)</strong> and
-          the <strong>German Society for Thymus Therapy (GSTT)</strong>.</p>
-      </div>
-
-      <h3 class="js-reveal" style="margin-top:44px;font-size:15.5px;font-weight:500;color:var(--gold-2)">
-        Recognised internationally · Featured across global media
-      </h3>
-      <div class="media-row js-reveal">
-        <span class="media-chip"><svg><use href="#i-star"/></svg> Africa Health</span>
-        <span class="media-chip"><svg><use href="#i-star"/></svg> AirAsia</span>
-        <span class="media-chip"><svg><use href="#i-star"/></svg> Cosmoprof Asia Hong Kong</span>
-        <span class="media-chip"><svg><use href="#i-star"/></svg> Arab Health</span>
-        <span class="media-chip"><svg><use href="#i-star"/></svg> Hurun Report</span>
-        <span class="media-chip"><svg><use href="#i-star"/></svg> SilverKris</span>
-        <span class="media-chip"><svg><use href="#i-star"/></svg> 3Sixty</span>
-        <span class="media-chip"><svg><use href="#i-star"/></svg> Sands Style</span>
-      </div>
-
-      <p class="closing js-reveal" style="text-align:center">
-        This is not a new brand looking for its first believers. This is an international wellness ecosystem —
-        <strong>luxury retreats, premium biotechnology and a long-term business opportunity</strong> — already proven across
-        Europe, the United States and Asia.
+    <div class="narrow" style="margin-top:48px">
+      <p class="h-title js-reveal" style="font-size:clamp(22px,2.8vw,30px)">14 Markets. One Global Vision.</p>
+      <p class="closing js-reveal" style="text-align:center;margin-top:16px">
+        Discover why partners around the world are exploring the ZÉLL-V business opportunity — and what it could look like
+        in your market.
       </p>
 
       <div class="cta-block js-reveal">
@@ -704,37 +706,77 @@
   <div class="wide">
     <div class="narrow js-reveal">
       <p class="eyebrow">The Difference</p>
-      <h2 class="h-title">Before this masterclass <span class="gold">vs after</span></h2>
+      <h2 class="h-title">Before <span class="gold">&amp;</span> After</h2>
       <div class="rule"></div>
     </div>
 
     <div class="ba-grid">
       <article class="glass ba-card js-reveal">
-        <span class="ba-tag before"><svg style="width:12px;height:12px"><use href="#i-close"/></svg> Before</span>
+        <span class="ba-tag before"><svg style="width:12px;height:12px"><use href="#i-close"/></svg> Before This Class</span>
         <ul>
-          <li><span class="ba-ico x"><svg><use href="#i-close"/></svg></span><span>You know wellness is growing, but you have no idea where you'd actually fit in it.</span></li>
-          <li><span class="ba-ico x"><svg><use href="#i-close"/></svg></span><span>Every opportunity looks the same, and you can't tell the credible ones from the noise.</span></li>
-          <li><span class="ba-ico x"><svg><use href="#i-close"/></svg></span><span>You'd have to invent the product, the science and the training yourself.</span></li>
-          <li><span class="ba-ico x"><svg><use href="#i-close"/></svg></span><span>Income depends entirely on how many hours you personally put in.</span></li>
-          <li><span class="ba-ico x"><svg><use href="#i-close"/></svg></span><span>You keep waiting for the "right time" — and another year goes by.</span></li>
+          <li>
+            <span class="ba-ico x"><svg><use href="#i-close"/></svg></span>
+            <span><b>A Good Product = A Good Business</b>You may think having a good product is the most important part of building a Wellness business.</span>
+          </li>
+          <li>
+            <span class="ba-ico x"><svg><use href="#i-close"/></svg></span>
+            <span><b>I Need to Build Everything Myself</b>You may believe you need to create your own team, marketing, training and customer system from zero.</span>
+          </li>
+          <li>
+            <span class="ba-ico x"><svg><use href="#i-close"/></svg></span>
+            <span><b>Where Do I Find My First Customers?</b>You may have a product, but still wonder where your first customers will come from.</span>
+          </li>
+          <li>
+            <span class="ba-ico x"><svg><use href="#i-close"/></svg></span>
+            <span><b>Selling Means Talking About Products</b>You may see Wellness business mainly as selling products and competing on price.</span>
+          </li>
+          <li>
+            <span class="ba-ico x"><svg><use href="#i-close"/></svg></span>
+            <span><b>I Don't Know What Makes a Brand Sustainable</b>You may know what you want to sell, but not yet understand what makes a brand grow and last.</span>
+          </li>
+          <li>
+            <span class="ba-ico x"><svg><use href="#i-close"/></svg></span>
+            <span><b>Is This Business Right for My Market?</b>You may see the opportunity, but still have questions about how an international Wellness business can be adapted to your own market.</span>
+          </li>
         </ul>
       </article>
 
       <article class="glass ba-card after js-reveal">
-        <span class="ba-tag after"><svg style="width:12px;height:12px"><use href="#i-check"/></svg> After</span>
+        <span class="ba-tag after"><svg style="width:12px;height:12px"><use href="#i-check"/></svg> After This Class</span>
         <ul>
-          <li><span class="ba-ico c"><svg><use href="#i-check"/></svg></span><span>You can name the exact segment of the $4T market you'd build in, and why.</span></li>
-          <li><span class="ba-ico c"><svg><use href="#i-check"/></svg></span><span>You can explain the Swiss–German science in one sentence a customer understands.</span></li>
-          <li><span class="ba-ico c"><svg><use href="#i-check"/></svg></span><span>You know what ZÉLL-V hands you on day one — products, training, medical backing, brand.</span></li>
-          <li><span class="ba-ico c"><svg><use href="#i-check"/></svg></span><span>You understand how retreats and repeat purchases create income that compounds.</span></li>
-          <li><span class="ba-ico c"><svg><use href="#i-check"/></svg></span><span>You have a clear yes or no — and if it's yes, the exact next step.</span></li>
+          <li>
+            <span class="ba-ico c"><svg><use href="#i-check"/></svg></span>
+            <span><b>You See the Business Behind the Product</b>You'll understand why a good product is only the beginning — and what else is needed to build a sustainable brand.</span>
+          </li>
+          <li>
+            <span class="ba-ico c"><svg><use href="#i-check"/></svg></span>
+            <span><b>You Understand the Power of an Ecosystem</b>You'll see how Medical, Nutrition, Education, Marketing, Sales and Events can work together to support a Wellness business.</span>
+          </li>
+          <li>
+            <span class="ba-ico c"><svg><use href="#i-check"/></svg></span>
+            <span><b>You Have a Clearer Customer Acquisition Mindset</b>You'll understand how to identify your target customer, build trust and approach your first customers more strategically.</span>
+          </li>
+          <li>
+            <span class="ba-ico c"><svg><use href="#i-check"/></svg></span>
+            <span><b>You See Wellness as Education + Experience + Trust</b>You'll discover how customer education and experience can create value beyond simply selling a product.</span>
+          </li>
+          <li>
+            <span class="ba-ico c"><svg><use href="#i-check"/></svg></span>
+            <span><b>You Understand What Makes a Business Scalable</b>You'll have a clearer picture of the systems, people and support needed to move from individual selling to a structured business.</span>
+          </li>
+          <li>
+            <span class="ba-ico c"><svg><use href="#i-check"/></svg></span>
+            <span><b>You Can Start Thinking About Your Own Market</b>You'll leave with a clearer framework to ask: could this business model work in my market — and what would I need to do next?</span>
+          </li>
         </ul>
       </article>
     </div>
 
-    <p class="closing js-reveal" style="text-align:center">
-      These two hours may be the <strong>most important decision you make for your business this year</strong>.
-    </p>
+    <div class="shift-row js-reveal">
+      <span class="shift-item">Product Thinking <svg><use href="#i-arrow"/></svg> Business Thinking</span>
+      <span class="shift-item">Doing It Alone <svg><use href="#i-arrow"/></svg> Building With a System</span>
+      <span class="shift-item">Selling <svg><use href="#i-arrow"/></svg> Creating Long-Term Value</span>
+    </div>
 
     <div class="cta-block js-reveal">
       <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
