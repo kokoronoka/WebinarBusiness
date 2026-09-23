@@ -77,9 +77,34 @@ function doPost(e) {
   }
 }
 
-// Lets you open the /exec URL in a browser to check the deployment is live.
+// Open the /exec URL in a browser to check the deployment — it reports exactly
+// which spreadsheet and tab this script writes to, and how many rows are stored.
 function doGet() {
-  return json({ ok: true, message: 'Registration endpoint is running.' });
+  try {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    if (!ss) {
+      return json({
+        ok: false,
+        error: 'This script is not bound to a spreadsheet. Open your Google Sheet and use ' +
+               'Extensions > Apps Script (do not create a standalone script at script.google.com).'
+      });
+    }
+    var sheet = getSheet();
+    return json({
+      ok: true,
+      message: 'Registration endpoint is running.',
+      spreadsheetName: ss.getName(),
+      spreadsheetUrl: ss.getUrl(),
+      writingToTab: SHEET_NAME,
+      allTabs: ss.getSheets().map(function (s) { return s.getName(); }),
+      rowsStored: Math.max(0, sheet.getLastRow() - 1),
+      lastRow: sheet.getLastRow() > 1
+        ? sheet.getRange(sheet.getLastRow(), 1, 1, COLUMNS.length).getDisplayValues()[0]
+        : null
+    });
+  } catch (err) {
+    return json({ ok: false, error: String(err) });
+  }
 }
 
 function getSheet() {
