@@ -1374,28 +1374,8 @@
       color: var(--gold);
     }
 
-    .map-legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-family: var(--mono);
-      font-size: 11.5px;
-      color: var(--ink-soft);
-    }
 
-    .map-legend span {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
 
-    .lg {
-      width: 11px;
-      height: 11px;
-      border-radius: 999px;
-      border: 2.5px solid var(--gold);
-      display: inline-block;
-    }
 
     .map-area {
       position: relative;
@@ -1554,24 +1534,7 @@
       gap: 12px;
     }
 
-    .rc-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-family: var(--mono);
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
 
-    .rc-status i {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--gold);
-    }
 
     .rc-name {
       margin-top: 8px;
@@ -1579,11 +1542,6 @@
       font-weight: 700;
     }
 
-    .rc-count {
-      margin-top: 2px;
-      font-size: 13px;
-      color: var(--ink-soft);
-    }
 
     .rc-close {
       flex: none;
@@ -1854,24 +1812,19 @@
       text-align: center;
     }
 
-    .foot-brand {
-      font-weight: 800;
-      font-size: 22px;
+    .foot-lead {
+      font-size: clamp(16px, 1.9vw, 21px);
+      font-weight: 700;
       letter-spacing: -.02em;
+      line-height: 1.4;
       color: var(--ink);
-      text-decoration: none;
-      display: inline-block;
+      max-width: 40ch;
+      margin-inline: auto;
     }
 
-    .foot-brand em {
-      font-style: normal;
+    .foot-lead span {
       color: var(--gold);
-    }
-
-    .foot-tag {
-      margin-top: 10px;
-      font-size: 13.5px;
-      color: var(--ink-soft);
+      margin-inline: 2px;
     }
 
     .foot-desc {
@@ -1882,25 +1835,8 @@
       line-height: 1.7;
     }
 
-    .foot-links {
-      margin-top: 22px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px 22px;
-    }
 
-    .foot-links a {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--ink-soft);
-      text-decoration: none;
-      transition: color .2s ease;
-    }
 
-    .foot-links a:hover {
-      color: var(--gold);
-    }
 
     .foot-copy {
       margin-top: 28px;
@@ -2490,7 +2426,7 @@
       <!-- speaker photos — centred, as on the webinar reference -->
       <div class="hero-photos fade-in d3">
         <figure class="hero-photo">
-          <div class="frame"><img src="assets/images/Elliott.jpg" alt="Elliott Pang, speaker" width="522" height="699">
+          <div class="frame"><img src="assets/images/elliott-hero.jpg" alt="Elliott Pang, speaker" width="395" height="528">
           </div>
           <figcaption class="cap"><b>Elliott Pang</b><span class="role">General Manager</span></figcaption>
         </figure>
@@ -2602,9 +2538,6 @@
       </div>
 
       <p class="closing js-reveal" style="text-align:center">
-        A professional with an existing customer network
-        <strong> Interested </strong> in building a differentiated wellness business in your market
-        But there is one problem.
         The market is <strong>crowded</strong>
         Thousands of products.
         Hundreds of brands.
@@ -2700,7 +2633,7 @@
     <div class="narrow">
       <div class="js-reveal">
         <p class="eyebrow">The Agenda</p>
-        <h2 class="h-title">In This Class, <span class="gold">I Will Hold Nothing Back.</span></h2>
+        <h2 class="h-title">In This Class, <span class="gold">We Will Hold Nothing Back.</span></h2>
         <div class="rule"></div>
         <p class="lede">I'll share what we've learned from building and growing a Health &amp; Wellness brand over the
           years —
@@ -2746,17 +2679,27 @@
         </article>
       </div>
 
-      <p class="closing js-reveal" style="text-align:center">
-        <strong>A REAL BRAND. A REAL JOURNEY. REAL LESSONS.</strong>
-        The ideas we share are not simply theory.
-        They come from the journey of building a Health & Wellness brand over more than 20 years.
-        From a product.
-        To a brand.
-        From a brand.
-        To an integrated Wellness ecosystem.
-        From one market.
-        To an international business.
-      </p>
+      <div class="js-reveal" style="margin-top:56px">
+        <h3 style="text-align:center;font-size:clamp(19px,2.4vw,27px);line-height:1.3">
+          A Real Brand. A Real Journey. <span class="gold">Real Lessons.</span>
+        </h3>
+        <p class="closing" style="text-align:center;margin-top:16px">
+          The ideas we share are not simply theory. They come from the journey of building a Health &amp; Wellness brand
+          over <strong>more than 20 years</strong>.
+        </p>
+
+        <div class="shift-row">
+          <span class="shift-item">From a product <svg>
+              <use href="#i-arrow" />
+            </svg> To a brand</span>
+          <span class="shift-item">From a brand <svg>
+              <use href="#i-arrow" />
+            </svg> To an integrated Wellness ecosystem</span>
+          <span class="shift-item">From one market <svg>
+              <use href="#i-arrow" />
+            </svg> To an international business</span>
+        </div>
+      </div>
 
       <div class="cta-block js-reveal">
         <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
@@ -3230,15 +3173,15 @@
           </figure>
 
           <figure class="ag-card"><span class="ag-no">02</span><img
-              src="assets/images/imageGallery/DSC_8189-scaled-561x374.jpg"
-              alt="Speaker briefing the audience at the Cellular Therapy Symposium" loading="lazy">
-            <figcaption>Symposium Briefing</figcaption>
-          </figure>
-
-          <figure class="ag-card"><span class="ag-no">03</span><img
               src="assets/images/imageGallery/DSC_072-scaled-561x374.jpg" alt="Seminar audience listening to a speaker"
               loading="lazy">
             <figcaption>Public Symposium</figcaption>
+          </figure>
+
+          <figure class="ag-card"><span class="ag-no">03</span><img
+              src="assets/images/imageGallery/DSC_9139-scaled-561x374.jpg"
+              alt="Panel of speakers on stage at the Cellular Therapy Symposium" loading="lazy">
+            <figcaption>Panel of Speakers</figcaption>
           </figure>
 
           <figure class="ag-card"><span class="ag-no">04</span><img
@@ -3247,50 +3190,49 @@
             <figcaption>International Customer Event</figcaption>
           </figure>
 
-
-
           <figure class="ag-card"><span class="ag-no">05</span><img
               src="assets/images/cambodia international customer event.jpg"
               alt="Wide view of the symposium ballroom filled with attendees" loading="lazy">
-            <figcaption>Cambodia International Customer Event</figcaption>
+            <figcaption>International Customer Event</figcaption>
           </figure>
 
           <figure class="ag-card"><span class="ag-no">06</span><img
-              src="assets/images/imageGallery/DSC_9139-scaled-561x374.jpg"
-              alt="Panel of speakers on stage at the Cellular Therapy Symposium" loading="lazy">
-            <figcaption>Panel of Speakers</figcaption>
+              src="assets/images/celerbationevent.jpg"
+              alt="Celebration event with ZÉLL-V product boxes on display" loading="lazy">
+            <figcaption>International Customer Event</figcaption>
           </figure>
 
           <figure class="ag-card"><span class="ag-no">07</span><img
-              src="assets/images/imageGallery/DSC_8057-scaled-561x374.jpg" alt="Seminar presentation with dual screens"
-              loading="lazy">
-            <figcaption>Seminar Presentation</figcaption>
+              src="assets/images/internationalCustomerEvent2.jpg"
+              alt="Speaker briefing the audience at the Cellular Therapy Symposium" loading="lazy">
+            <figcaption>International Customer Event</figcaption>
           </figure>
+
           <figure class="ag-card"><span class="ag-no">08</span><img
-              src="assets/images/imageGallery/DSC_143-scaled-561x374.jpg"
-              alt="Partners receiving certificates at a Cellular Therapy Symposium" loading="lazy">
-            <figcaption>Certificate Presentation</figcaption>
+              src="assets/images/InternalTrainings.jpg" alt="Seminar presentation with dual screens"
+              loading="lazy">
+            <figcaption>Internal Trainings</figcaption>
           </figure>
+
           <figure class="ag-card"><span class="ag-no">09</span><img
-              src="assets/images/imageGallery/20231101_135631-561x432.jpg"
-              alt="Team portrait at a ZÉLL-V Cellular Therapy event" loading="lazy">
-            <figcaption>Cellular Therapy Event</figcaption>
-          </figure>
-          <figure class="ag-card"><span class="ag-no">10</span><img
-              src="assets/images/imageGallery/DSC_7830-scaled-561x374.jpg"
+              src="assets/images/VipPrivateEvent.jpg"
               alt="Group photo with partners at a ZÉLL-V event" loading="lazy">
-            <figcaption>Partner Meeting</figcaption>
+            <figcaption>VIP Private Event</figcaption>
           </figure>
+
+          <figure class="ag-card"><span class="ag-no">10</span><img
+              src="assets/images/VipPrivateEvent2.jpg"
+              alt="Group photo with partners at a ZÉLL-V event" loading="lazy">
+            <figcaption>VIP Private Event</figcaption>
+          </figure>
+
           <figure class="ag-card"><span class="ag-no">11</span><img
-              src="assets/images/celerbationevent.jpg"
-              alt="Celebration event with ZÉLL-V product boxes on display" loading="lazy">
-            <figcaption>Celebration Event</figcaption>
-          </figure>
-          <figure class="ag-card"><span class="ag-no">12</span><img
               src="assets/images/imageGallery/IMG_20241011_163633-scaled-561x422.jpg"
               alt="ZÉLL-V exhibition booth at a trade show" loading="lazy">
-            <figcaption>Exhibition Booth</figcaption>
+            <figcaption>Business Exhibition</figcaption>
           </figure>
+
+                  
         </div>
         <div class="ag-arrows">
           <button type="button" class="tm-arrow" id="ag-prev" aria-label="Scroll gallery left"><svg>
@@ -3321,9 +3263,6 @@
           <p class="map-hint"><svg>
               <use href="#i-pin" />
             </svg>Tap a marker to explore a region</p>
-          <div class="map-legend">
-            <span><i class="lg"></i>Active outlets &amp; markets</span>
-          </div>
         </div>
         <div class="map-area">
           <div class="map-stage" id="map-stage">
@@ -3341,38 +3280,38 @@
       </div>
       <div class="gallery-grid js-reveal">
         <figure><img src="assets/images/centres/wellness-hub.jpg" alt="ZÉLL-V Wellness Hub building" loading="lazy">
-          <figcaption class="gallery-cap">ZÉLL-V Wellness Hub</figcaption>
+          <figcaption class="gallery-cap">ZÉLL-V WELLNESS KUALA LUMPUR</figcaption>
         </figure>
         <figure><img src="assets/images/centres/vietnam.jpg" alt="ZÉLL-V Vietnam centre storefront" loading="lazy">
-          <figcaption class="gallery-cap">ZÉLL-V Vietnam</figcaption>
+          <figcaption class="gallery-cap">ZÉLL-V WELLNESS VIETNAM </figcaption>
         </figure>
         <figure><img src="assets/images/centres/ngee-ann.jpg" alt="ZÉLL-V outlet at Ngee Ann City, Singapore"
             loading="lazy">
-          <figcaption class="gallery-cap">Ngee Ann City, Singapore</figcaption>
+          <figcaption class="gallery-cap">ZÉLL-V SINGAPORE NGEE ANN CITY</figcaption>
         </figure>
         <figure><img src="assets/images/centres/signature-lounge.jpg" alt="ZÉLL-V lifestyle lounge with city skyline"
             loading="lazy">
-          <figcaption class="gallery-cap">Signature Lounge</figcaption>
+          <figcaption class="gallery-cap">ZÉLL-V SIGNATURE LOUNGE</figcaption>
         </figure>
         <figure><img src="assets/images/centres/concierge.jpg" alt="ZÉLL-V outlet concierge greeting a guest"
             loading="lazy">
-          <figcaption class="gallery-cap">Concierge</figcaption>
+          <figcaption class="gallery-cap">ZÉLL-V CONCIERGE</figcaption>
         </figure>
         <figure><img src="assets/images/centres/penang.jpg" alt="ZÉLL-V Penang outlet at dusk" loading="lazy">
-          <figcaption class="gallery-cap">Penang Outlet</figcaption>
+          <figcaption class="gallery-cap">ZÉLL-V WELLNESS PENANG</figcaption>
         </figure>
         <figure><img src="assets/images/centres/johor.jpg" alt="ZÉLL-V Johor outlet on opening day" loading="lazy">
-          <figcaption class="gallery-cap">Johor Outlet</figcaption>
+          <figcaption class="gallery-cap">ZÉLL-V WELLNESS JOHOR BAHRU</figcaption>
         </figure>
         <figure><img src="assets/images/centres/cambodia.jpg" alt="ZÉLL-V Cambodia centre entrance" loading="lazy">
-          <figcaption class="gallery-cap">ZÉLL-V Cambodia</figcaption>
+          <figcaption class="gallery-cap">ZÉLL-V WELLNESS CAMBODIA</figcaption>
         </figure>
       </div>
 
       <div class="narrow js-reveal" style="margin-top:56px">
         <div class="glass band">
           <h3>A Real Brand. <span class="gold">A Real Journey.</span></h3>
-          <p class="sub">Discover what it really takes to build and grow a Health & Wellness business in today's competitive market.</p>
+          <p class="sub">Discover what it really takes to build and grow a Health &amp; Wellness business in today's competitive market.</p>
           <div class="cta-block" style="margin-top:26px">
             <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
               Join the masterclass <svg>
@@ -3441,16 +3380,10 @@
   <!-- 10 · FOOTER                                                  -->
   <!-- ============================================================ -->
   <footer>
-    <a href="#top" class="foot-brand">ZÉLL<em>·</em>V</a>
-    <p class="foot-tag">Give More Life To Your Years</p>
-    <p class="foot-desc">An international wellness ecosystem — luxury retreats, premium biotechnology and long-term
-      business opportunity.</p>
-
-    <div class="foot-links">
-      <a href="#curriculum">What's covered</a>
-      <a href="https://wa.link/x4as2c" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="https://kokoronoka.github.io/businessZellv/" target="_blank" rel="noopener">About ZÉLL-V</a>
-    </div>
+    <p class="foot-lead">3 Secrets <span>•</span> 5 Key Practices <span>•</span> 20+ Years of Real Business Experience
+    </p>
+    <p class="foot-desc">Discover what it really takes to build and grow a health &amp; wellness business in today's
+      competitive market.</p>
 
     <p class="foot-copy">© 2026 ZÉLL-V · All Rights Reserved</p>
     <p class="foot-disclaimer">
@@ -3636,7 +3569,7 @@
         { id: 'europe', name: 'Europe', lon: 8.5, lat: 47, countries: ['Germany', 'Switzerland'], outlets: [], flag: 'country-Europe-300x122.png' },
         { id: 'middle-east', name: 'Middle East', lon: 35.8, lat: 33.9, countries: ['Lebanon'], outlets: [], flag: 'country-Middle-East-1-300x141.png' },
         { id: 'east-asia', name: 'East Asia', lon: 114.2, lat: 24, countries: ['Hong Kong', 'China', 'Macau', 'Taiwan'], outlets: ['Hong Kong', 'Macau'], flag: 'country-East-Asia-1-300x263.png' },
-        { id: 'asean', name: 'ASEAN', lon: 103.8, lat: 2, countries: ['Singapore', 'Malaysia', 'Brunei', 'Vietnam', 'Indonesia'], outlets: ['Marina Bay Sands, Singapore', 'Ngee Ann City, Singapore', 'Pavilion Kuala Lumpur, Malaysia', 'Brunei', 'Vietnam'], flag: 'country-ASEAN-3-229x300.png' },
+        { id: 'asean', name: 'ASEAN', lon: 103.8, lat: 2, countries: ['Singapore', 'Malaysia', 'Brunei', 'Vietnam', 'Indonesia', 'Cambodia'], outlets: ['Marina Bay Sands, Singapore', 'Ngee Ann City, Singapore', 'Pavilion Kuala Lumpur, Malaysia', 'Brunei', 'Vietnam'], flag: 'country-ASEAN-3-229x300.png' },
         { id: 'southern-africa', name: 'Southern Africa', lon: 25, lat: -26, countries: ['South Africa'], outlets: [], flag: 'country-Africa-1-300x122.png' },
         { id: 'oceania', name: 'Oceania', lon: 146, lat: -30, countries: ['New Zealand'], outlets: [], flag: 'country-Oceania-300x122.png' }
       ];
@@ -3655,9 +3588,7 @@
         var renderRegion = function (r) {
           var html =
             '<div class="rc-top"><div>' +
-            '<span class="rc-status"><i></i>Active outlets</span>' +
             '<h3 class="rc-name" id="rc-name">' + r.name + '</h3>' +
-            '<p class="rc-count">' + r.countries.length + (r.countries.length === 1 ? ' market' : ' markets') + '</p>' +
             '</div><button type="button" class="rc-close" aria-label="Close region details"><svg><use href="#i-close"/></svg></button></div>';
           if (r.flag) html += '<div class="rc-flags"><img src="' + FLAGS + r.flag + '" alt="Flags of ' + r.name + '"></div>';
           html += '<div class="rc-countries">' + r.countries.map(function (c) { return '<span>' + c + '</span>'; }).join('') + '</div>';
@@ -3748,9 +3679,11 @@
       }
 
       /* ---------- form submit ---------- */
-      // SET THIS: your handler endpoint (CRM webhook, Formspree, serverless function…).
-      // Leave null to keep the demo behaviour (shows the success state without sending).
-      var FORM_ENDPOINT = null;
+      // Registrations are saved to a Google Sheet via Apps Script.
+      // Setup steps are in google-apps-script.gs — paste the deployed /exec URL here.
+      // Leave FORM_ENDPOINT null to keep the demo behaviour (success state, nothing sent).
+      var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycby0odL0OvgKsEE7RLuqjbv4hSafR0bfSMib2zMZSVi2JgXVxNZGWZEov_ECpU5-8LAN/exec';
+      var FORM_SECRET = 'change-me-to-something-random';   // must match SHARED_SECRET in the script
 
       var form = document.getElementById('reg-form');
       var errEl = document.getElementById('cf-error');
@@ -3783,11 +3716,22 @@
 
         if (!FORM_ENDPOINT) { done(); return; }
 
+        var payload = Object.fromEntries(new FormData(form));
+        payload.secret = FORM_SECRET;
+        payload.page = location.href;
+        payload.referrer = document.referrer;
+
+        // text/plain keeps this a "simple" request — Apps Script web apps reject
+        // the CORS preflight that an application/json content type would trigger.
         fetch(FORM_ENDPOINT, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(new FormData(form)))
-        }).then(function (r) { r.ok ? done() : fail(); }).catch(fail);
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        }).then(function (r) {
+          return r.json().catch(function () { return { ok: r.ok }; });
+        }).then(function (res) {
+          res && res.ok ? done() : fail();
+        }).catch(fail);
       });
     })();
   </script>
