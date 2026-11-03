@@ -1,6 +1,15 @@
 /**
  * ZÉLL-V Masterclass — registration handler
- * Saves every registration from index.html into a Google Sheet.
+ * Saves every registration from index.html into a Google Sheet — into TWO tabs:
+ *
+ *   "Registrations"          The original record. Leave it untouched.
+ *   "Copy of Registrations"  Your working copy. Add remark / status / follow-up columns,
+ *                            insert or reorder columns, highlight rows — all safe.
+ *
+ * New rows in the working copy are placed by matching the column HEADINGS, so as long
+ * as you don't rename the 8 original headings (Timestamp, Full name, WhatsApp, Email,
+ * Country / city, Profile, Source page, Referrer), every registration lands in the right
+ * column. Your extra columns are left blank on new rows for you to fill in.
  *
  * ── SETUP (about 5 minutes) ─────────────────────────────────────────────
  * 1. Create a new Google Sheet (sheets.new). Name it e.g. "Masterclass Registrations".
@@ -23,8 +32,14 @@
 // Must match FORM_SECRET in index.html. Change it to any random string.
 var SHARED_SECRET = 'change-me-to-something-random';
 
-// Tab inside the spreadsheet where rows are appended (created automatically).
+// The original record — rows are appended here in fixed column order. Don't edit this tab.
 var SHEET_NAME = 'Registrations';
+
+// The working copy — rows are placed by heading, so you can add/insert columns freely.
+// Must match the tab name EXACTLY (Google names a duplicated tab "Copy of Registrations").
+// If this tab doesn't exist yet, the script creates it as a full duplicate of the original.
+// Set to '' to switch the working copy off.
+var COPY_SHEET_NAME = 'Copy of Registrations';
 
 var COLUMNS = [
   'Timestamp',
@@ -49,23 +64,34 @@ function doPost(e) {
       return json({ ok: false, error: 'bad secret' });
     }
 
-    var sheet = getSheet();
+    var row = buildRow(data);
 
     // Keep concurrent submissions from overwriting each other.
     var lock = LockService.getScriptLock();
     lock.waitLock(20000);
     try {
-      sheet.appendRow([
-        new Date(),
-        data.name || '',
-        // Leading apostrophe keeps "+60…" as text instead of a broken formula.
-        data.phone ? "'" + data.phone : '',
-        data.email || '',
-        data.country || '',
-        data.profile || '',
-        data.page || '',
-        data.referrer || ''
-      ]);
+      // Make sure the working copy exists BEFORE writing: if it has to be created as a
+      // duplicate of the original, that must happen before this row is added, or the
+      // new registration would end up in the copy twice.
+      var copy = null;
+      try {
+        copy = getWorkingCopy();
+      } catch (copyErr) {
+        console.error('Working copy unavailable: ' + copyErr);
+      }
+
+      // 1) Original — the source of truth. If this fails, the request fails.
+      getSheet().appendRow(row);
+
+      // 2) Working copy — best effort. A problem here must never lose a registration,
+      //    because the original above already holds it.
+      if (copy) {
+        try {
+          appendToWorkingCopy(copy, row);
+        } catch (copyErr) {
+          console.error('Working copy not updated: ' + copyErr);
+        }
+      }
     } finally {
       lock.releaseLock();
     }
@@ -77,8 +103,52 @@ function doPost(e) {
   }
 }
 
-// Open the /exec URL in a browser to check the deployment — it reports exactly
-// which spreadsheet and tab this script writes to, and how many rows are stored.
+// One registration, in COLUMNS order.
+function buildRow(data) {
+  return [
+    new Date(),
+    data.name || '',
+    // Leading apostrophe keeps "+60…" as text instead of a broken formula.
+    data.phone ? "'" + data.phone : '',
+    data.email || '',
+    data.country || '',
+    data.profile || '',
+    data.page || '',
+    data.referrer || ''
+  ];
+}
+
+// Writes each value under its matching heading in the working copy, on the next empty row.
+// Only the 8 registration cells are written — your own columns on that row are left alone.
+function appendToWorkingCopy(sheet, row) {
+  var colOf = headingColumns(sheet);
+  var target = sheet.getLastRow() + 1;
+
+  COLUMNS.forEach(function (heading, i) {
+    var col = colOf[normalise(heading)];
+    if (col) sheet.getRange(target, col).setValue(row[i]);
+  });
+}
+
+// Map of normalised heading text -> 1-based column number, from row 1.
+function headingColumns(sheet) {
+  var lastCol = sheet.getLastColumn();
+  var map = {};
+  if (lastCol === 0) return map;
+  sheet.getRange(1, 1, 1, lastCol).getDisplayValues()[0].forEach(function (h, i) {
+    var key = normalise(h);
+    if (key && !map[key]) map[key] = i + 1;
+  });
+  return map;
+}
+
+function normalise(s) {
+  return String(s || '').trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+// Open the /exec URL in a browser to check the deployment — it reports which spreadsheet
+// and tabs this script writes to, how many rows each holds, and any headings the working
+// copy is missing (a renamed heading means that value can't be placed there).
 function doGet() {
   try {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -89,19 +159,39 @@ function doGet() {
                'Extensions > Apps Script (do not create a standalone script at script.google.com).'
       });
     }
+
     var sheet = getSheet();
-    return json({
+    var report = {
       ok: true,
       message: 'Registration endpoint is running.',
       spreadsheetName: ss.getName(),
       spreadsheetUrl: ss.getUrl(),
-      writingToTab: SHEET_NAME,
       allTabs: ss.getSheets().map(function (s) { return s.getName(); }),
-      rowsStored: Math.max(0, sheet.getLastRow() - 1),
-      lastRow: sheet.getLastRow() > 1
-        ? sheet.getRange(sheet.getLastRow(), 1, 1, COLUMNS.length).getDisplayValues()[0]
-        : null
-    });
+      original: {
+        tab: SHEET_NAME,
+        rowsStored: Math.max(0, sheet.getLastRow() - 1),
+        lastRow: sheet.getLastRow() > 1
+          ? sheet.getRange(sheet.getLastRow(), 1, 1, COLUMNS.length).getDisplayValues()[0]
+          : null
+      }
+    };
+
+    var copy = COPY_SHEET_NAME ? ss.getSheetByName(COPY_SHEET_NAME) : null;
+    if (copy) {
+      var colOf = headingColumns(copy);
+      report.workingCopy = {
+        tab: COPY_SHEET_NAME,
+        rowsStored: Math.max(0, copy.getLastRow() - 1),
+        missingHeadings: COLUMNS.filter(function (h) { return !colOf[normalise(h)]; })
+      };
+    } else if (COPY_SHEET_NAME) {
+      report.workingCopy = 'No tab named "' + COPY_SHEET_NAME + '" yet — it will be created ' +
+        'as a duplicate of "' + SHEET_NAME + '" on the next registration.';
+    } else {
+      report.workingCopy = 'switched off (COPY_SHEET_NAME is empty)';
+    }
+
+    return json(report);
   } catch (err) {
     return json({ ok: false, error: String(err) });
   }
@@ -124,6 +214,20 @@ function getSheet() {
   }
 
   return sheet;
+}
+
+// Returns the working-copy tab, creating it as a duplicate of the original if it's missing.
+function getWorkingCopy() {
+  if (!COPY_SHEET_NAME) return null;
+
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var copy = ss.getSheetByName(COPY_SHEET_NAME);
+
+  if (!copy) {
+    copy = getSheet().copyTo(ss).setName(COPY_SHEET_NAME);
+  }
+
+  return copy;
 }
 
 /**

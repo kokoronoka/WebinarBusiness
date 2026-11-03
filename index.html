@@ -596,10 +596,16 @@
       height: 15px;
     }
 
+    .pain {
+      align-items: center;
+    }
+
     .pain p {
-      font-size: 14.5px;
-      line-height: 1.65;
-      color: var(--ink-soft);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.45;
+      letter-spacing: -.01em;
+      color: var(--ink);
     }
 
     .pain p strong {
@@ -689,6 +695,25 @@
       color: var(--gold);
     }
 
+    /* Opportunity cards with a photo across the top */
+    .opp-pic {
+      padding-top: 0;
+      overflow: hidden;
+    }
+
+    .opp-pic img {
+      width: calc(100% + 48px);
+      max-width: none;
+      margin: 0 -24px 20px;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+
+    .opp-pic:hover img {
+      transform: scale(1.05);
+    }
+
     .opp-grid.two {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       max-width: 840px;
@@ -744,7 +769,7 @@
     }
 
     .curr-row h3 {
-      font-size: 17px;
+      font-size: clamp(17px, 1.9vw, 20px);
       font-weight: 700;
       line-height: 1.45;
       letter-spacing: -.01em;
@@ -760,6 +785,69 @@
     .curr-row p strong {
       color: var(--ink);
       font-weight: 700;
+    }
+
+    .curr-pts,
+    .spk-pts {
+      list-style: none;
+      padding: 0;
+    }
+
+    .curr-pts {
+      margin: 10px 0 0;
+      display: grid;
+      gap: 6px;
+    }
+
+    .curr-pts li,
+    .spk-pts li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .curr-pts li::before,
+    .spk-pts li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: .62em;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+
+    .curr-pts strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .spk-pts {
+      gap: 10px;
+    }
+
+    .spk-pts li {
+      font-size: 15px;
+    }
+
+    /* three event photos under the agenda intro */
+    .photo-strip {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .photo-strip img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid var(--border);
     }
 
     /* ---- credibility (dark) ---- */
@@ -996,11 +1084,14 @@
 
     .ba-card li b {
       display: block;
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--ink);
-      margin-bottom: 4px;
       letter-spacing: -.01em;
+    }
+
+    .ba-card ul {
+      gap: 16px;
     }
 
     .ba-ico {
@@ -1699,6 +1790,12 @@
       grid-row: span 2;
     }
 
+    /* row of four interior portraits under the outlet tiles */
+    .gallery-grid figure:nth-child(n+9) {
+      grid-column: span 3;
+      grid-row: span 3;
+    }
+
     /* this tile crops sideways — keep the storefront signage in frame */
     .gallery-grid figure:nth-child(3) img {
       object-position: 60% 50%;
@@ -1729,13 +1826,257 @@
 
     /* ---- press ---- */
     .press-card {
-      margin-top: 36px;
+      margin: 36px 0 0;
       padding: clamp(16px, 3vw, 32px);
     }
 
     .press-card img {
       border-radius: 14px;
       width: 100%;
+      height: auto;
+    }
+
+    /* ---- scroll-expand story (Wellness Hub) ---- */
+    /* Base = static layout (no JS / reduced motion). .xh-live = animated sticky version. */
+    .xh {
+      background: var(--ink);
+      color: var(--bg);
+      position: relative;
+      overflow: clip;
+    }
+
+    .xh-stage {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: var(--section-y) var(--gutter);
+      text-align: center;
+    }
+
+    .xh-backdrop {
+      display: none;
+    }
+
+    .xh-title {
+      order: -1;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .12em;
+      font-size: clamp(28px, 4.6vw, 64px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -.035em;
+      color: var(--bg);
+      max-width: 22ch;
+    }
+
+    .xh-gold {
+      color: #E8C873;
+    }
+
+    .xh-media {
+      position: relative;
+      margin: 0;
+      width: min(92vw, 560px);
+      aspect-ratio: 720 / 880;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .8);
+    }
+
+    .xh-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 6%;
+    }
+
+    .xh-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(14, 11, 8, .85) 0%, rgba(14, 11, 8, .25) 45%, rgba(14, 11, 8, .1) 100%);
+    }
+
+    .xh-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: clamp(20px, 4vw, 44px);
+      text-align: left;
+    }
+
+    .xh-kicker {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+    }
+
+    .xh-reveal {
+      margin-top: 10px;
+      font-size: clamp(22px, 3.2vw, 44px);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -.03em;
+      color: #fff;
+      max-width: 18ch;
+    }
+
+    .xh-reveal .gold {
+      background: linear-gradient(120deg, #E8C873 0%, #C9A13B 60%, #A87D22 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .xh-place {
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .06em;
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .xh-hint {
+      display: none;
+    }
+
+    /* ---- animated version: JS adds .xh-live and drives --p (0 → 1) ---- */
+    .xh.xh-live .xh-track {
+      height: 260vh;
+    }
+
+    .xh.xh-live .xh-stage {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      height: 100svh;
+      padding: 0;
+      gap: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      --w0: min(64vw, 300px);
+      --h0: min(50vh, 400px);
+      --w1: min(94vw, 1180px);
+      --h1: min(84vh, 800px);
+    }
+
+    .xh.xh-live .xh-backdrop {
+      display: block;
+      position: absolute;
+      inset: -40px;
+      background: url("assets/images/zellvwellnessHub.jpg") center 30% / cover no-repeat;
+      filter: blur(30px) saturate(1.1);
+      opacity: calc(.2 * (1 - var(--p, 0)));
+      transform: scale(1.1);
+    }
+
+    .xh.xh-live .xh-media {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(var(--w0) + (var(--w1) - var(--w0)) * var(--p, 0));
+      height: calc(var(--h0) + (var(--h1) - var(--h0)) * var(--p, 0));
+      aspect-ratio: auto;
+      transform: translate(-50%, -50%);
+      border-radius: calc(22px - 8px * var(--p, 0));
+    }
+
+    .xh.xh-live .xh-media img {
+      filter: brightness(calc(.5 + .5 * var(--p, 0)));
+    }
+
+    .xh.xh-live .xh-shade {
+      opacity: calc(.55 + .45 * var(--p, 0));
+    }
+
+    .xh.xh-live .xh-caption {
+      opacity: calc((var(--p, 0) - .8) * 5);
+      transform: translateY(calc((1 - var(--p, 0)) * 24px));
+    }
+
+    .xh.xh-live .xh-title {
+      position: relative;
+      z-index: 2;
+      order: 0;
+      max-width: none;
+      pointer-events: none;
+      text-shadow: 0 2px 30px rgba(0, 0, 0, .55);
+    }
+
+    .xh.xh-live .xh-line {
+      display: block;
+      white-space: nowrap;
+      opacity: calc(1 - var(--p, 0) * 1.35);
+    }
+
+    .xh.xh-live .xh-a {
+      transform: translateX(calc(var(--p, 0) * -70vw));
+    }
+
+    .xh.xh-live .xh-b {
+      transform: translateX(calc(var(--p, 0) * 70vw));
+    }
+
+    .xh.xh-live .xh-hint {
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: max(28px, 5vh);
+      z-index: 2;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(251, 248, 242, .6);
+      opacity: calc(1 - var(--p, 0) * 5);
+    }
+
+    .xh.xh-live .xh-hint::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 28px;
+      margin: 10px auto 0;
+      background: linear-gradient(180deg, rgba(201, 161, 59, .8), transparent);
+    }
+
+    @media (max-width: 700px) {
+      .xh.xh-live .xh-track {
+        height: 220vh;
+      }
+
+      .xh.xh-live .xh-stage {
+        --w1: 94vw;
+        --h1: min(76vh, 760px);
+      }
+
+      .xh.xh-live .xh-line {
+        white-space: normal;
+        max-width: 14ch;
+        margin-inline: auto;
+      }
+
+      .xh.xh-live .xh-a {
+        transform: translateX(calc(var(--p, 0) * -110vw));
+      }
+
+      .xh.xh-live .xh-b {
+        transform: translateX(calc(var(--p, 0) * 110vw));
+      }
+
+      /* clear the sticky "Claim my free seat" bar */
+      .xh.xh-live .xh-hint {
+        bottom: 104px;
+      }
     }
 
     /* ---- final cta (dark) ---- */
@@ -2103,27 +2444,60 @@
       margin-top: 18px;
     }
 
-    .join-box {
-      margin-top: 22px;
-      padding: 22px;
-      border-radius: 18px;
-      border: 1px solid rgba(166, 124, 27, .32);
-      background: radial-gradient(90% 150% at 50% 0%, rgba(166, 124, 27, .14), transparent 65%), var(--glass-strong);
+    .phone-group {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 8px;
     }
 
-    .join-lead {
+    .phone-group select {
+      width: auto;
+      padding-left: 12px;
+      padding-right: 34px;
+      background-position: right 10px center;
       font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--gold);
+      font-size: 13.5px;
     }
 
-    .cf-success .join-text {
-      margin-top: 8px;
-      font-size: 14px;
-      line-height: 1.6;
+    .phone-hint {
+      min-height: 18px;
+      margin-top: 6px;
+      font-size: 12.5px;
+      line-height: 1.4;
+      color: var(--ink-faint);
+    }
+
+    .phone-hint.ok {
+      color: #1E7A3E;
+    }
+
+    .phone-hint.bad {
+      color: var(--alert);
+      font-weight: 600;
+    }
+
+    .cf-field input.is-invalid {
+      border-color: var(--alert);
+    }
+
+
+
+
+
+
+    .cf-success .wa-dm {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .cf-success .cal-btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .cf-success .cf-note a {
+      color: inherit;
+      text-decoration: underline;
     }
 
     .join-btn {
@@ -2318,6 +2692,25 @@
         grid-template-columns: minmax(0, 1fr);
       }
 
+      /* photo cards stay 2 × 2 on phones */
+      .opp-grid.opp-pics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .opp-pic {
+        padding: 0 12px 18px;
+      }
+
+      .opp-pic img {
+        width: calc(100% + 24px);
+        margin: 0 -12px 14px;
+      }
+
+      .opp-pic h3 {
+        font-size: 15px;
+      }
+
       .sticky-bar {
         display: block;
       }
@@ -2335,6 +2728,14 @@
 
       .btn-wide {
         width: 100%;
+      }
+
+      .photo-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .photo-strip img:first-child {
+        grid-column: span 2;
       }
 
       .logistics {
@@ -2359,11 +2760,11 @@
       s.parentNode.insertBefore(t, s)
     }(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '423265776216597');
+    fbq('init', '1277845224474760');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=423265776216597&ev=PageView&noscript=1" /></noscript>
+      src="https://www.facebook.com/tr?id=1277845224474760&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
 
 </head>
@@ -2439,31 +2840,26 @@
       <p class="hero-kicker fade-in">The Business Model Behind a Successful Health &amp; Wellness Brand</p>
 
       <h1 class="fade-in d1">
-        The wellness industry is worth <span class="grad">$4 trillion</span> — and most people will only ever watch it
-        from outside
+        A <span class="grad">$4 trillion</span> industry. Most people only watch from outside.
       </h1>
 
-      <h2 class="fade-in d1">
-        The Wellness Market Is Growing.<br>But Building a Profitable Wellness Business Is Not Easy.
-      </h2>
-
       <p class="hero-lead fade-in d2">
-        Everyone sees the opportunity. But few understand how to:
+        Few know how to:
       </p>
 
       <ul class="hero-list fade-in d2">
         <li><svg>
             <use href="#i-check" />
-          </svg>Find the right market.</li>
+          </svg>Find the right market</li>
         <li><svg>
             <use href="#i-check" />
-          </svg>Create a differentiated position.</li>
+          </svg>Stand out from competitors</li>
         <li><svg>
             <use href="#i-check" />
-          </svg>Build customer trust.</li>
+          </svg>Build customer trust</li>
         <li><svg>
             <use href="#i-check" />
-          </svg>And turn a good product into a sustainable business.</li>
+          </svg>Turn a product into a lasting business</li>
       </ul>
 
       <div class="fade-in d2" style="margin-top:36px">
@@ -2473,11 +2869,7 @@
       </div>
 
       <p class="hero-promise fade-in d2">
-        <strong>3 Secrets. 5 Key Practices. 20+ Years</strong> of Real-World Experience.
-      </p>
-
-      <p class="intro fade-in d2">
-        Discover what it really takes to build and grow a Health &amp; Wellness business in today's competitive market.
+        <strong>3 Secrets · 5 Key Practices · 20+ Years</strong>
       </p>
 
       <!-- speaker photos — centred, as on the webinar reference -->
@@ -2498,10 +2890,10 @@
       <div class="logistics fade-in d3">
         <span class="li full"><svg>
             <use href="#i-cal" />
-          </svg><span class="mono">Saturday, 3 October</span></span>
+          </svg><span class="mono">Tuesday, 10 November</span></span>
         <span class="li full"><svg>
             <use href="#i-globe" />
-          </svg><span class="mono">3:00 PM Jakarta · 4:00 PM Philippines</span></span>
+          </svg><span class="mono">7:00 PM WIB (Jakarta time)</span></span>
         <span class="li full"><svg>
             <use href="#i-screen" />
           </svg><span>Online via Zoom</span></span>
@@ -2516,8 +2908,7 @@
             <use href="#i-arrow" />
           </svg>
         </button>
-        <p class="cta-note"><b>No replay will be provided.</b> Miss it and it's gone. Seats are filling — register now.
-        </p>
+        <p class="cta-note"><b>No replay.</b> Limited seats.</p>
       </div>
 
       <div class="pill-row fade-in d4">
@@ -2554,52 +2945,43 @@
           <span class="pain-mark"><svg>
               <use href="#i-close" />
             </svg></span>
-          <p>You've hit a <strong>ceiling on your income</strong> — working more hours is the only lever you have left,
-            and you've run out of hours.</p>
+          <p>Your income has hit a ceiling</p>
         </article>
         <article class="glass pain js-reveal">
           <span class="pain-mark"><svg>
               <use href="#i-close" />
             </svg></span>
-          <p>You want to sell something you'd <strong>actually put your name behind</strong> — not another commodity
-            product with no science and no story.</p>
+          <p>You want a product you truly believe in</p>
         </article>
         <article class="glass pain js-reveal">
           <span class="pain-mark"><svg>
               <use href="#i-close" />
             </svg></span>
-          <p>You've looked at wellness before, but every option was <strong>crowded, cheap, or impossible to
-              differentiate</strong> in your market.</p>
+          <p>Every option feels crowded or cheap</p>
         </article>
         <article class="glass pain js-reveal">
           <span class="pain-mark"><svg>
               <use href="#i-close" />
             </svg></span>
-          <p>You were handed a product and <strong>left to figure the business out alone</strong> — no training, no
-            system, no one to call.</p>
+          <p>You were left to figure it out alone</p>
         </article>
         <article class="glass pain js-reveal">
           <span class="pain-mark"><svg>
               <use href="#i-close" />
             </svg></span>
-          <p>Your customers buy once and disappear. You want <strong>repeat revenue and real relationships</strong>, not
-            one-off transactions.</p>
+          <p>Customers buy once, then disappear</p>
         </article>
         <article class="glass pain js-reveal">
           <span class="pain-mark"><svg>
               <use href="#i-close" />
             </svg></span>
-          <p>You want to build something that <strong>outlasts you</strong> — a legacy your family can inherit, not a
-            job you have to keep showing up to.</p>
+          <p>You want a legacy, not just a job</p>
         </article>
       </div>
 
       <p class="closing js-reveal" style="text-align:center">
-        The market is <strong>crowded</strong>.
-        Thousands of products.
-        Hundreds of brands.
-        Constant price competition.
-        So how do you build a business that customers choose — and continue to trust?
+        Crowded market. Endless price wars.<br>
+        <strong>So how do customers choose you — and keep coming back?</strong>
       </p>
     </div>
   </section>
@@ -2610,8 +2992,8 @@
   <section class="section section-deep" style="padding-block:clamp(40px,6vw,76px)">
     <div class="narrow js-reveal">
       <div class="glass band">
-        <h3>What you just read is where most people stop. <span class="gold">None of it is a dead end.</span></h3>
-        <p class="sub">It's simply what happens when you're building without a system behind you.</p>
+        <h3>Most people stop here. <span class="gold">You don't have to.</span></h3>
+        <p class="sub">What's missing is a system.</p>
 
         <div class="cta-block" style="margin-top:28px">
           <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
@@ -2619,9 +3001,7 @@
               <use href="#i-arrow" />
             </svg>
           </button>
-          <p class="cta-note">Saturday, 3 October<br>3:00 PM Jakarta · 4:00 PM Philippines<br>Online via Zoom · No
-            replay
-          </p>
+          <p class="cta-note">Tue, 10 November · 7:00 PM WIB<br>Zoom · No replay</p>
         </div>
       </div>
     </div>
@@ -2634,27 +3014,31 @@
     <div class="wide">
       <div class="narrow js-reveal">
         <p class="eyebrow">The Opportunity</p>
-        <h2 class="h-title">The Wellness Market Is Crowded.
-          <span class="gold">But Opportunity Still Exists.</span>
+        <h2 class="h-title">Crowded market.
+          <span class="gold">Real opportunity.</span>
         </h2>
         <div class="rule"></div>
-        <p class="lede">The opportunity is not always in selling more products.<br>It is in finding:</p>
+        <p class="lede">It's not about selling more. It's about finding:</p>
       </div>
 
-      <div class="opp-grid">
-        <div class="glass opp js-reveal">
+      <div class="opp-grid opp-pics">
+        <div class="glass opp opp-pic js-reveal">
+          <img src="assets/images/centres/concierge.jpg" alt="ZÉLL-V concierge greeting a guest" loading="lazy">
           <span class="opp-no">01</span>
           <h3>The Right Customer</h3>
         </div>
-        <div class="glass opp js-reveal">
+        <div class="glass opp opp-pic js-reveal">
+          <img src="assets/images/centres/penang.jpg" alt="ZÉLL-V Penang V Clinic storefront at dusk" loading="lazy">
           <span class="opp-no">02</span>
           <h3>The Right Positioning</h3>
         </div>
-        <div class="glass opp js-reveal">
+        <div class="glass opp opp-pic js-reveal">
+          <img src="assets/images/centres/cambodia.jpg" alt="Garden entrance of the ZÉLL-V Cambodia centre" loading="lazy">
           <span class="opp-no">03</span>
           <h3>The Right Experience</h3>
         </div>
-        <div class="glass opp js-reveal">
+        <div class="glass opp opp-pic js-reveal">
+          <img src="assets/images/InternalTrainings.jpg" alt="ZÉLL-V internal training session" loading="lazy">
           <span class="opp-no">04</span>
           <h3>The Right Business Model</h3>
         </div>
@@ -2669,8 +3053,8 @@
       </div>
 
       <p class="closing js-reveal" style="text-align:center">
-        You don't have to compete for everyone.<br>
-        <strong>You need to know who you are building your business for.</strong>
+        Don't compete for everyone.<br>
+        <strong>Know who you're building for.</strong>
       </p>
 
       <div class="cta-block js-reveal">
@@ -2690,49 +3074,59 @@
     <div class="narrow">
       <div class="js-reveal">
         <p class="eyebrow">The Agenda</p>
-        <h2 class="h-title">In This Class, <span class="gold">We Will Hold Nothing Back.</span></h2>
+        <h2 class="h-title">We hold <span class="gold">nothing back.</span></h2>
         <div class="rule"></div>
-        <p class="lede">We'll share what we've learned from building and growing a Health &amp; Wellness brand over the
-          years —
-          not just the success story, but the thinking, systems and lessons behind it.</p>
-        <p class="lede" style="margin-top:14px;font-weight:600;color:var(--ink)">Here are some of the things we'll
-          openly share:</p>
+        <p class="lede">The thinking, systems and lessons behind our brand — not just the success story.</p>
+      </div>
+
+      <div class="photo-strip js-reveal">
+        <img src="assets/images/imageGallery/DSC_8189-scaled-561x374.jpg" alt="Speaker presenting research to a full symposium hall" width="561" height="374" loading="lazy">
+        <img src="assets/images/imageGallery/DSC00-285-scaled-561x375.jpg" alt="Panel discussion at the International Cellular Therapy Symposium" width="561" height="375" loading="lazy">
+        <img src="assets/images/imageGallery/DSC_8057-scaled-561x374.jpg" alt="Audience at a ZÉLL-V symposium" width="561" height="374" loading="lazy">
       </div>
 
       <div class="curr">
         <article class="curr-row js-reveal">
           <span class="curr-no">01</span>
-          <h3>How to Build a Sustainable Health &amp; Wellness Brand</h3>
-          <p>Why a good product is only the beginning — and how <strong>Medical, Nutrition, Education, Marketing, Sales
-              and
-              Events</strong> come together to build a sustainable business ecosystem.</p>
+          <h3>Build a Sustainable Wellness Brand</h3>
+          <ul class="curr-pts">
+            <li>Why a good product is only the start</li>
+            <li>How <strong>Medical, Nutrition, Education, Marketing, Sales &amp; Events</strong> work together</li>
+          </ul>
         </article>
         <article class="curr-row js-reveal">
           <span class="curr-no">02</span>
-          <h3>How to Get Your First Customers</h3>
-          <p>Where do your first customers really come from? How do you find the right audience, build trust and
-            <strong>turn your first conversations into long-term customer relationships</strong>?
-          </p>
+          <h3>Get Your First Customers</h3>
+          <ul class="curr-pts">
+            <li>Find the right audience</li>
+            <li>Build trust quickly</li>
+            <li>Turn first conversations into <strong>long-term customers</strong></li>
+          </ul>
         </article>
         <article class="curr-row js-reveal">
           <span class="curr-no">03</span>
-          <h3>How to Turn Health Education into Business</h3>
-          <p>How do you educate customers, create value and <strong>build trust without simply competing on
-              price</strong>?</p>
+          <h3>Turn Health Education into Business</h3>
+          <ul class="curr-pts">
+            <li>Educate customers and create value</li>
+            <li>Win trust <strong>without competing on price</strong></li>
+          </ul>
         </article>
         <article class="curr-row js-reveal">
           <span class="curr-no">04</span>
-          <h3>How to Build a Business System That Can Grow</h3>
-          <p>How do you move from selling by yourself to building a business supported by
-            <strong>training, marketing, professional expertise, sales systems and customer support</strong>?
-          </p>
+          <h3>Build a System That Grows</h3>
+          <ul class="curr-pts">
+            <li>Move beyond selling on your own</li>
+            <li>Use <strong>training, marketing, sales &amp; support</strong> systems</li>
+          </ul>
         </article>
         <article class="curr-row js-reveal">
           <span class="curr-no">05</span>
-          <h3>What It Really Takes to Build an International Wellness Business</h3>
-          <p>From positioning and market entry to localisation, partnerships and business strategy —
-            <strong>what should you think about before taking a Wellness brand into a new market</strong>?
-          </p>
+          <h3>Take Wellness International</h3>
+          <ul class="curr-pts">
+            <li>Positioning and market entry</li>
+            <li>Localisation and partnerships</li>
+            <li>What to check <strong>before entering a new market</strong></li>
+          </ul>
         </article>
       </div>
 
@@ -2741,20 +3135,19 @@
           A Real Brand. A Real Journey. <span class="gold">Real Lessons.</span>
         </h3>
         <p class="closing" style="text-align:center;margin-top:16px">
-          The ideas we share are not simply theory. They come from the journey of building a Health &amp; Wellness brand
-          over <strong>more than 20 years</strong>.
+          Not theory. <strong>20+ years</strong> of building a wellness brand.
         </p>
 
         <div class="shift-row">
-          <span class="shift-item">From a product <svg>
+          <span class="shift-item">Product <svg>
               <use href="#i-arrow" />
-            </svg> To a brand</span>
-          <span class="shift-item">From a brand <svg>
+            </svg> Brand</span>
+          <span class="shift-item">Brand <svg>
               <use href="#i-arrow" />
-            </svg> To an integrated Wellness ecosystem</span>
-          <span class="shift-item">From one market <svg>
+            </svg> Wellness ecosystem</span>
+          <span class="shift-item">One market <svg>
               <use href="#i-arrow" />
-            </svg> To an international business</span>
+            </svg> International</span>
         </div>
       </div>
 
@@ -2874,43 +3267,37 @@
               <span class="ba-ico x"><svg>
                   <use href="#i-close" />
                 </svg></span>
-              <span><b>A Good Product = A Good Business</b>You may think having a good product is the most important
-                part of building a Wellness business.</span>
+              <span><b>A good product = a good business</b></span>
             </li>
             <li>
               <span class="ba-ico x"><svg>
                   <use href="#i-close" />
                 </svg></span>
-              <span><b>I Need to Build Everything Myself</b>You may believe you need to create your own team, marketing,
-                training and customer system from zero.</span>
+              <span><b>I must build everything myself</b></span>
             </li>
             <li>
               <span class="ba-ico x"><svg>
                   <use href="#i-close" />
                 </svg></span>
-              <span><b>Where Do I Find My First Customers?</b>You may have a product, but still wonder where your first
-                customers will come from.</span>
+              <span><b>Where do I find customers?</b></span>
             </li>
             <li>
               <span class="ba-ico x"><svg>
                   <use href="#i-close" />
                 </svg></span>
-              <span><b>Selling Means Talking About Products</b>You may see Wellness business mainly as selling products
-                and competing on price.</span>
+              <span><b>Selling = talking about products</b></span>
             </li>
             <li>
               <span class="ba-ico x"><svg>
                   <use href="#i-close" />
                 </svg></span>
-              <span><b>I Don't Know What Makes a Brand Sustainable</b>You may know what you want to sell, but not yet
-                understand what makes a brand grow and last.</span>
+              <span><b>What makes a brand last?</b></span>
             </li>
             <li>
               <span class="ba-ico x"><svg>
                   <use href="#i-close" />
                 </svg></span>
-              <span><b>Is This Business Right for My Market?</b>You may see the opportunity, but still have questions
-                about how an international Wellness business can be adapted to your own market.</span>
+              <span><b>Will this work in my market?</b></span>
             </li>
           </ul>
         </article>
@@ -2924,43 +3311,37 @@
               <span class="ba-ico c"><svg>
                   <use href="#i-check" />
                 </svg></span>
-              <span><b>You See the Business Behind the Product</b>You'll understand why a good product is only the
-                beginning — and what else is needed to build a sustainable brand.</span>
+              <span><b>You see the business behind the product</b></span>
             </li>
             <li>
               <span class="ba-ico c"><svg>
                   <use href="#i-check" />
                 </svg></span>
-              <span><b>You Understand the Power of an Ecosystem</b>You'll see how Medical, Nutrition, Education,
-                Marketing, Sales and Events can work together to support a Wellness business.</span>
+              <span><b>You understand the power of an ecosystem</b></span>
             </li>
             <li>
               <span class="ba-ico c"><svg>
                   <use href="#i-check" />
                 </svg></span>
-              <span><b>You Have a Clearer Customer Acquisition Mindset</b>You'll understand how to identify your target
-                customer, build trust and approach your first customers more strategically.</span>
+              <span><b>You know how to win your first customers</b></span>
             </li>
             <li>
               <span class="ba-ico c"><svg>
                   <use href="#i-check" />
                 </svg></span>
-              <span><b>You See Wellness as Education + Experience + Trust</b>You'll discover how customer education and
-                experience can create value beyond simply selling a product.</span>
+              <span><b>You sell through education, experience &amp; trust</b></span>
             </li>
             <li>
               <span class="ba-ico c"><svg>
                   <use href="#i-check" />
                 </svg></span>
-              <span><b>You Understand What Makes a Business Scalable</b>You'll have a clearer picture of the systems,
-                people and support needed to move from individual selling to a structured business.</span>
+              <span><b>You know what makes a business scalable</b></span>
             </li>
             <li>
               <span class="ba-ico c"><svg>
                   <use href="#i-check" />
                 </svg></span>
-              <span><b>You Can Start Thinking About Your Own Market</b>You'll leave with a clearer framework to ask:
-                could this business model work in my market — and what would I need to do next?</span>
+              <span><b>You have a framework for your own market</b></span>
             </li>
           </ul>
         </article>
@@ -2995,7 +3376,7 @@
     <div class="wide">
       <div class="narrow js-reveal">
         <p class="eyebrow">Your Speakers</p>
-        <h2 class="h-title">Meet the people <span class="gold">sharing the stage</span></h2>
+        <h2 class="h-title">Meet your <span class="gold">speakers</span></h2>
         <div class="rule"></div>
       </div>
 
@@ -3013,27 +3394,16 @@
           <p class="spk-tags"><span>Healthcare Business</span><span>International Markets</span><span>Business
               Development</span></p>
 
-          <div class="spk-bio">
-            <p>With over <strong>15 years of experience at ZÉLL-V</strong>, Elliott Pang has been involved in
-              international
-              business development since 2011, and operations and sales management since 2019.</p>
-            <p>As General Manager of ZÉLL-V — a premium healthcare and wellness brand with over 20 years of development
-              and an
-              international presence — Elliott brings practical experience in market development, business operations,
-              and
-              team leadership.</p>
-          </div>
+          <ul class="spk-bio spk-pts">
+            <li><strong>15+ years</strong> at ZÉLL-V</li>
+            <li>International business development since 2011</li>
+            <li>Operations &amp; sales management since 2019</li>
+            <li>Shares the <strong>strategy, positioning and systems</strong> behind a 20-year brand</li>
+          </ul>
 
           <blockquote class="spk-quote">
-            <p class="lbl">His sharing is built around one principle</p>
             <p class="q">“A good product does not necessarily make a good business.”</p>
           </blockquote>
-
-          <p class="spk-bio" style="margin-top:20px">Drawing from ZÉLL-V’s 20-year journey, Elliott shares the
-            <strong>strategy, positioning, market development, and support systems</strong> behind building a
-            sustainable
-            healthcare business.
-          </p>
         </div>
       </div>
 
@@ -3050,19 +3420,12 @@
           <p class="spk-role">International Business Manager</p>
           <p class="spk-tags"><span>Healthcare</span><span>Healthy Ageing</span><span>International Markets</span></p>
 
-          <div class="spk-bio">
-            <p>Over the past <strong>4 years in the healthcare and wellness industry</strong>, I have worked closely
-              with
-              clients, healthcare professionals, and business partners across international markets.</p>
-            <p>Through conversations with people from different backgrounds and stages of life, I've seen one thing
-              repeatedly — as we grow older, people are not simply looking to live longer. They want to maintain their
-              <strong>energy, mental clarity, mobility, and independence</strong> for the years ahead.
-            </p>
-            <p>My role at ZÉLL-V is to connect people with the right knowledge, expertise, and healthy ageing solutions,
-              while translating complex wellness and cellular health concepts into practical conversations that are
-              easier
-              to understand and apply.</p>
-          </div>
+          <ul class="spk-bio spk-pts">
+            <li><strong>4 years</strong> in healthcare &amp; wellness</li>
+            <li>Works with clients, health professionals and partners across markets</li>
+            <li>Focus: healthy ageing — <strong>energy, clarity, mobility, independence</strong></li>
+            <li>Turns complex cellular-health science into practical advice</li>
+          </ul>
         </div>
       </div>
 
@@ -3204,20 +3567,19 @@
     <div class="wide">
       <div class="narrow js-reveal">
         <p class="eyebrow">Behind the Experience</p>
-        <h2 class="h-title">The insights shared here come from a <span class="gold">real business journey.</span></h2>
+        <h2 class="h-title">Built on a <span class="gold">real business journey.</span></h2>
         <div class="rule"></div>
-        <p class="lede">Meet ZÉLL-V — a Health &amp; Wellness brand with 20+ years of experience and an international
-          presence.</p>
+        <p class="lede">20+ years. An international presence.</p>
       </div>
 
       <div class="opp-grid two">
         <div class="glass opp js-reveal">
           <span class="opp-no">Global Presence</span>
-          <p>Our international markets, partners and growing wellness network.</p>
+          <p>Markets, partners and a growing network</p>
         </div>
         <div class="glass opp js-reveal">
           <span class="opp-no">Expertise &amp; Events</span>
-          <p>Medical and wellness forums, expert-led education and international events.</p>
+          <p>Medical forums, expert education, international events</p>
         </div>
       </div>
 
@@ -3289,6 +3651,32 @@
             <figcaption>Business Exhibition</figcaption>
           </figure>
 
+          <figure class="ag-card"><span class="ag-no">12</span><img
+              src="assets/images/imageGallery/DSC_8015-scaled-561x374.jpg" alt="Ballroom filled with attendees at a ZÉLL-V symposium" loading="lazy">
+            <figcaption>Symposium Hall</figcaption>
+          </figure>
+
+          <figure class="ag-card"><span class="ag-no">13</span><img
+              src="assets/images/imageGallery/DSC_143-scaled-561x374.jpg" alt="Attendees holding certificates at the Cellular Therapy Symposium, 10 April 2026" loading="lazy">
+            <figcaption>Symposium Graduates</figcaption>
+          </figure>
+
+          <figure class="ag-card"><span class="ag-no">14</span><img
+              src="assets/images/imageGallery/DSC_7830-scaled-561x374.jpg" alt="ZÉLL-V team with partners at a symposium" loading="lazy">
+            <figcaption>Industry Partners</figcaption>
+          </figure>
+
+          <figure class="ag-card"><span class="ag-no">15</span><img
+              src="assets/images/imageGallery/20231101_135631-561x432.jpg" alt="ZÉLL-V leadership team with guests" loading="lazy">
+            <figcaption>Leadership Team</figcaption>
+          </figure>
+
+          <figure class="ag-card"><span class="ag-no">16</span><img
+              src="assets/images/imageGallery/DSC_6043-scaled-561x374.jpeg" alt="Guests at a ZÉLL-V celebration event" loading="lazy">
+            <figcaption>Celebration Event</figcaption>
+          </figure>
+
+
                   
         </div>
         <div class="ag-arrows">
@@ -3299,6 +3687,41 @@
               <use href="#i-arrow" />
             </svg></button>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- 8a-2 · SCROLL-EXPAND STORY — the Wellness Hub                -->
+  <!-- Vanilla re-creation of the "scroll-expansion-hero" component: -->
+  <!-- the photo grows as you scroll while the headline slides apart.-->
+  <!-- Without JS (or with reduced motion) it shows as a static      -->
+  <!-- headline + photo, so nothing is ever hidden.                 -->
+  <!-- ============================================================ -->
+  <section class="xh" id="hub-story" aria-labelledby="xh-title">
+    <div class="xh-track">
+      <div class="xh-stage">
+        <div class="xh-backdrop" aria-hidden="true"></div>
+
+        <figure class="xh-media">
+          <img src="assets/images/zellvwellnessHub.jpg"
+            alt="The ZÉLL-V Wellness Hub tower, the first rejuvenation hub in Asia" width="720" height="880"
+            loading="lazy" decoding="async">
+          <div class="xh-shade" aria-hidden="true"></div>
+          <figcaption class="xh-caption">
+            <p class="xh-kicker">20 Years of Focus</p>
+            <p class="xh-reveal">Discover the power of <span class="gold">20 years of focus.</span></p>
+            <p class="xh-place">ZÉLL-V Wellness Hub</p>
+          </figcaption>
+        </figure>
+
+        <h2 class="xh-title" id="xh-title">
+          <span class="xh-line xh-a">From one signature product</span>
+          <span class="xh-line xh-b">to the first <span class="xh-gold">rejuvenation hub in Asia</span> —</span>
+        </h2>
+
+        <p class="xh-hint" aria-hidden="true">Scroll to discover</p>
       </div>
     </div>
   </section>
@@ -3363,12 +3786,34 @@
         <figure><img src="assets/images/centres/cambodia.jpg" alt="ZÉLL-V Cambodia centre entrance" loading="lazy">
           <figcaption class="gallery-cap">ZÉLL-V WELLNESS CAMBODIA</figcaption>
         </figure>
+        <figure><img src="assets/images/centres/v-wellness.jpg" alt="V Wellness reception and lounge" loading="lazy">
+          <figcaption class="gallery-cap">V WELLNESS</figcaption>
+        </figure>
+        <figure><img src="assets/images/centres/v-clinic.jpg" alt="V Clinic waiting lounge" loading="lazy">
+          <figcaption class="gallery-cap">V CLINIC</figcaption>
+        </figure>
+        <figure><img src="assets/images/centres/reception.jpg" alt="ZÉLL-V centre reception desk" loading="lazy">
+          <figcaption class="gallery-cap">ZÉLL-V RECEPTION</figcaption>
+        </figure>
+        <figure><img src="assets/images/centres/consultation-bar.jpg" alt="ZÉLL-V consultation bar" loading="lazy">
+          <figcaption class="gallery-cap">CONSULTATION BAR</figcaption>
+        </figure>
+      </div>
+
+      <div class="narrow js-reveal" style="margin-top:64px">
+        <p class="eyebrow">As Featured In</p>
+        <h2 class="h-title">Seen in <span class="gold">media &amp; trade shows</span></h2>
+        <figure class="glass press-card">
+          <img src="assets/images/Featuring.jpg"
+            alt="ZÉLL-V featured in AirAsia and Silverkris inflight magazines, Hurun Report, Cosmoprof Asia, Arab Health and Africa Health"
+            width="960" height="720" loading="lazy">
+        </figure>
       </div>
 
       <div class="narrow js-reveal" style="margin-top:56px">
         <div class="glass band">
           <h3>A Real Brand. <span class="gold">A Real Journey.</span></h3>
-          <p class="sub">Discover what it really takes to build and grow a Health &amp; Wellness business in today's competitive market.</p>
+          <p class="sub">Learn what it really takes to grow a wellness business.</p>
           <div class="cta-block" style="margin-top:26px">
             <button class="btn btn-solid btn-lg btn-wide" data-open-modal>
               Join the masterclass <svg>
@@ -3389,8 +3834,8 @@
     <div class="narrow">
       <div class="js-reveal">
         <p class="eyebrow">Last Call</p>
-        <h2 class="h-title">If you're serious about building something that lasts —
-          <span style="color:var(--gold-2)">this is two hours worth giving up.</span>
+        <h2 class="h-title">Serious about building something that lasts?
+          <span style="color:var(--gold-2)">Save your seat.</span>
         </h2>
         <div class="rule"></div>
       </div>
@@ -3399,13 +3844,10 @@
         <ul class="final-details">
           <li><svg>
               <use href="#i-cal" />
-            </svg><span class="k">Date</span><span class="v">Saturday, 3 October 2026</span></li>
+            </svg><span class="k">Date</span><span class="v">Tuesday, 10 November 2026</span></li>
           <li><svg>
               <use href="#i-clock" />
-            </svg><span class="k">Jakarta</span><span class="v">3:00 PM – 5:00 PM</span></li>
-          <li><svg>
-              <use href="#i-clock" />
-            </svg><span class="k">Philippines</span><span class="v">4:00 PM – 6:00 PM</span></li>
+            </svg><span class="k">Time (WIB)</span><span class="v">7:00 PM – 8:00 PM</span></li>
           <li><svg>
               <use href="#i-screen" />
             </svg><span class="k">Where</span><span class="v">Zoom — link on registration</span></li>
@@ -3437,10 +3879,8 @@
   <!-- 10 · FOOTER                                                  -->
   <!-- ============================================================ -->
   <footer>
-    <p class="foot-lead">3 Secrets <span>•</span> 5 Key Practices <span>•</span> 20+ Years of Real Business Experience
-    </p>
-    <p class="foot-desc">Discover what it really takes to build and grow a health &amp; wellness business in today's
-      competitive market.</p>
+    <p class="foot-lead">3 Secrets <span>•</span> 5 Key Practices <span>•</span> 20+ Years</p>
+    <p class="foot-desc">What it really takes to grow a wellness business.</p>
 
     <p class="foot-copy">© 2026 ZÉLL-V · All Rights Reserved</p>
     <p class="foot-disclaimer">
@@ -3471,9 +3911,9 @@
 
         <p class="modal-when"><svg>
             <use href="#i-cal" />
-          </svg><span>Saturday, 3 October<br>3:00 PM Jakarta · 4:00 PM Philippines</span></p>
+          </svg><span>Tuesday, 10 November<br>7:00 PM WIB (Jakarta time)</span></p>
         <h3 id="modal-title">Lock in your free seat</h3>
-        <p class="intro">Fill in your details and we'll send the Zoom link to your WhatsApp and email.</p>
+        <p class="intro">Register, then join our WhatsApp group for the Zoom link.</p>
 
         <!-- ============================================================ -->
         <!-- FORM                                                         -->
@@ -3490,21 +3930,47 @@
               <input type="text" id="f-name" name="name" placeholder="Your name" autocomplete="name" required>
             </div>
             <div class="cf-field">
-              <label for="f-phone">WhatsApp*</label>
-              <input type="tel" id="f-phone" name="phone" placeholder="+60 12 345 6789" autocomplete="tel" required>
-            </div>
-          </div>
-
-          <div class="cf-row">
-            <div class="cf-field">
               <label for="f-email">Email*</label>
               <input type="email" id="f-email" name="email" placeholder="you@example.com" autocomplete="email" required>
             </div>
-            <div class="cf-field">
-              <label for="f-country">Country / city*</label>
-              <input type="text" id="f-country" name="country" placeholder="Kuala Lumpur, MY"
-                autocomplete="country-name" required>
+          </div>
+
+          <!-- WhatsApp: country code + mobile number, validated as a real mobile for that country -->
+          <div class="cf-field">
+            <label for="f-phone">WhatsApp number*</label>
+            <div class="phone-group">
+              <select id="f-cc" aria-label="Country code">
+                <option value="ID">ID +62</option>
+                <option value="PH">PH +63</option>
+                <option value="MY">MY +60</option>
+                <option value="SG">SG +65</option>
+                <option value="VN">VN +84</option>
+                <option value="KH">KH +855</option>
+                <option value="BN">BN +673</option>
+                <option value="TH">TH +66</option>
+                <option value="HK">HK +852</option>
+                <option value="MO">MO +853</option>
+                <option value="TW">TW +886</option>
+                <option value="CN">CN +86</option>
+                <option value="AU">AU +61</option>
+                <option value="NZ">NZ +64</option>
+                <option value="LB">LB +961</option>
+                <option value="ZA">ZA +27</option>
+                <option value="DE">DE +49</option>
+                <option value="CH">CH +41</option>
+                <option value="GB">GB +44</option>
+                <option value="US">US +1</option>
+              </select>
+              <input type="tel" id="f-phone" name="phone" placeholder="Mobile number" autocomplete="tel-national"
+                inputmode="tel" required>
             </div>
+            <p class="phone-hint" id="phone-hint" aria-live="polite"></p>
+          </div>
+
+          <div class="cf-field">
+            <label for="f-country">Country / city*</label>
+            <input type="text" id="f-country" name="country" placeholder="e.g. Jakarta, Indonesia"
+              autocomplete="country-name" required>
           </div>
 
           <div class="cf-field">
@@ -3525,30 +3991,32 @@
           <button type="submit" class="btn btn-solid btn-lg">Secure my free seat <svg>
               <use href="#i-arrow" />
             </svg></button>
-          <p class="cf-note">Seats are limited to 50. After you register we'll send the link to your WhatsApp and email.
+          <p class="cf-note">Seats are limited to 50. After you register, join our WhatsApp group for the Zoom link.
           </p>
         </form>
 
+        <!-- Shown for a moment while the browser hands over to WhatsApp. The button is the fallback
+             for in-app browsers (Facebook / Instagram) that don't open WhatsApp automatically. -->
         <div class="cf-success" id="cf-success">
           <div class="tick"><svg>
               <use href="#i-check" />
             </svg></div>
           <h3 style="margin-top:18px">You're registered</h3>
-          <p>Add Saturday, 3 October to your calendar now so you don't miss it.</p>
-
-          <div class="join-box">
-            <p class="join-lead">One last step</p>
-            <p class="join-text">Join our WhatsApp community — that's where we send the Zoom link, reminders and
-              updates before the session.</p>
-            <a class="btn btn-solid btn-lg join-btn" href="https://chat.whatsapp.com/IAyVrK0az1R23BUX7vmeIW"
-              target="_blank" rel="noopener">
-              <svg>
-                <use href="#i-whatsapp" />
-              </svg> Join the WhatsApp community
-            </a>
-          </div>
-
-          <button class="btn btn-glass btn-lg" style="margin-top:14px" data-close-modal>Close</button>
+          <p>One last step — join our WhatsApp group. That's where we share the Zoom link and reminders before the
+            session.</p>
+          <a class="btn btn-solid btn-lg join-btn" href="https://chat.whatsapp.com/Gt5EmqWtcX8DFRVYjoRZDt" target="_blank" rel="noopener">
+            <svg>
+              <use href="#i-whatsapp" />
+            </svg> Join the WhatsApp group
+          </a>
+          <a class="btn btn-glass btn-lg wa-dm" id="wa-open" href="https://wa.me/6593822879" target="_blank"
+            rel="noopener">Or message us for the Zoom link</a>
+          <a class="btn btn-glass btn-lg cal-btn" id="cal-google" href="https://calendar.google.com/" target="_blank"
+            rel="noopener"><svg>
+              <use href="#i-cal" />
+            </svg> Add to Google Calendar</a>
+          <p class="cf-note" style="margin-top:10px">Tuesday, 10 November · 7:00 PM WIB. Using Apple or Outlook?
+            <a id="cal-ics" href="#" download="zell-v-masterclass.ics">Download the calendar file</a>.</p>
         </div>
 
       </div>
@@ -3582,6 +4050,7 @@
       var lastFocused = null;
 
       function openModal() {
+        if (typeof loadPhoneLib === 'function') loadPhoneLib();
         lastFocused = document.activeElement;
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
@@ -3747,12 +4216,209 @@
         openRegion('asean');
       }
 
+      /* ---------- scroll-expand story (Wellness Hub) ---------- */
+      // Progress comes from how far the tall track has scrolled past the sticky stage,
+      // so the page scrolls normally — nothing is locked or hijacked.
+      (function () {
+        var section = document.getElementById('hub-story');
+        if (!section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var track = section.querySelector('.xh-track');
+        var stage = section.querySelector('.xh-stage');
+        section.classList.add('xh-live');
+
+        var ticking = false, last = -1;
+        // The photo finishes growing at 70% of the track; the rest holds the reveal on screen.
+        var GROW_END = 0.7;
+
+        function update() {
+          ticking = false;
+          var rect = track.getBoundingClientRect();
+          var range = rect.height - window.innerHeight;
+          var raw = range > 0 ? Math.min(Math.max(-rect.top / range, 0), 1) : 1;
+          var t = Math.min(raw / GROW_END, 1);
+          var eased = t * t * (3 - 2 * t);   // smoothstep: gentle start and finish
+          if (Math.abs(eased - last) < 0.001) return;
+          last = eased;
+          stage.style.setProperty('--p', eased.toFixed(4));
+        }
+
+        function onScroll() {
+          if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        update();
+      })();
+
+      /* ---------- WhatsApp number validation ---------- */
+      // Uses libphonenumber's mobile-only dataset, so landlines and made-up digits are
+      // rejected and every accepted number is stored in clean international form (+60123456789).
+      // The library (~60 KB gzipped) is only fetched once someone starts registering.
+      var PHONE_LIB = 'https://cdn.jsdelivr.net/npm/libphonenumber-js@1.13.14/bundle/libphonenumber-mobile.js';
+      var phoneInput = document.getElementById('f-phone');
+      var ccSelect = document.getElementById('f-cc');
+      var phoneHint = document.getElementById('phone-hint');
+      var phoneLibPromise = null;
+      var PHONE_EXAMPLES = {
+        ID: '812 3456 7890', PH: '917 123 4567', MY: '12 345 6789', SG: '8123 4567',
+        VN: '91 234 5678', KH: '12 345 678', BN: '712 3456', TH: '81 234 5678',
+        HK: '5123 4567', MO: '6612 3456', TW: '912 345 678', CN: '131 2345 6789',
+        AU: '412 345 678', NZ: '21 123 4567', LB: '71 123 456', ZA: '71 123 4567',
+        DE: '1512 3456789', CH: '78 123 45 67', GB: '7400 123456', US: '201 555 0123'
+      };
+
+      function loadPhoneLib() {
+        if (window.libphonenumber) return Promise.resolve(window.libphonenumber);
+        if (!phoneLibPromise) {
+          phoneLibPromise = new Promise(function (resolve, reject) {
+            var sc = document.createElement('script');
+            sc.src = PHONE_LIB;
+            sc.async = true;
+            sc.onload = function () { window.libphonenumber ? resolve(window.libphonenumber) : reject(); };
+            sc.onerror = reject;
+            document.head.appendChild(sc);
+          }).catch(function () { phoneLibPromise = null; return null; });
+        }
+        return phoneLibPromise;
+      }
+
+      // Pre-select the visitor's country from their timezone (no permission prompt needed).
+      (function guessCountry() {
+        var tz = '';
+        try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (err) { }
+        var map = {
+          'Asia/Jakarta': 'ID', 'Asia/Pontianak': 'ID', 'Asia/Makassar': 'ID', 'Asia/Jayapura': 'ID',
+          'Asia/Manila': 'PH', 'Asia/Kuala_Lumpur': 'MY', 'Asia/Kuching': 'MY', 'Asia/Singapore': 'SG',
+          'Asia/Ho_Chi_Minh': 'VN', 'Asia/Saigon': 'VN', 'Asia/Phnom_Penh': 'KH', 'Asia/Brunei': 'BN',
+          'Asia/Bangkok': 'TH', 'Asia/Hong_Kong': 'HK', 'Asia/Macau': 'MO', 'Asia/Taipei': 'TW',
+          'Asia/Shanghai': 'CN', 'Asia/Beirut': 'LB', 'Africa/Johannesburg': 'ZA', 'Europe/Berlin': 'DE',
+          'Europe/Zurich': 'CH', 'Europe/London': 'GB', 'Pacific/Auckland': 'NZ'
+        };
+        var cc = map[tz] || (tz.indexOf('Australia/') === 0 ? 'AU' : tz.indexOf('America/') === 0 ? 'US' : '');
+        if (cc && ccSelect.querySelector('option[value="' + cc + '"]')) ccSelect.value = cc;
+      })();
+
+      function setPhonePlaceholder() {
+        phoneInput.placeholder = PHONE_EXAMPLES[ccSelect.value] || 'Mobile number';
+      }
+      setPhonePlaceholder();
+
+      function countryName(cc) {
+        try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(cc); } catch (err) { return cc; }
+      }
+
+      function showPhone(state, msg) {
+        phoneHint.className = 'phone-hint' + (state ? ' ' + state : '');
+        phoneHint.textContent = msg || '';
+        phoneInput.classList.toggle('is-invalid', state === 'bad');
+      }
+
+      // Returns the number in +E.164 form if valid, otherwise null (and flags the field).
+      function checkPhone(lib) {
+        var raw = phoneInput.value.trim();
+        if (!raw) {
+          phoneInput.setCustomValidity('Please enter your WhatsApp number.');
+          showPhone('bad', 'Please enter your WhatsApp number.');
+          return null;
+        }
+        if (!lib) {
+          // Library unavailable (offline / blocked): fall back to a basic length check so
+          // registration never breaks, while still rejecting obvious junk.
+          var digits = raw.replace(/\D/g, '');
+          var okBasic = digits.length >= 8 && digits.length <= 15;
+          phoneInput.setCustomValidity(okBasic ? '' : 'Please enter a valid mobile number.');
+          showPhone(okBasic ? '' : 'bad', okBasic ? '' : 'Please enter a valid mobile number.');
+          return okBasic ? raw : null;
+        }
+        var parsed = lib.parsePhoneNumberFromString(raw, ccSelect.value);
+        if (parsed && parsed.isValid()) {
+          phoneInput.setCustomValidity('');
+          showPhone('ok', '\u2713 ' + parsed.formatInternational());
+          return parsed.number;
+        }
+        var msg = 'That doesn\u2019t look like a valid ' + countryName(ccSelect.value) +
+          ' mobile number. Please check it, or change the country code.';
+        phoneInput.setCustomValidity(msg);
+        showPhone('bad', msg);
+        return null;
+      }
+
+      phoneInput.addEventListener('focus', function () { loadPhoneLib(); });
+      // While typing: confirm a valid number / clear an old error. Full error messages wait for blur.
+      phoneInput.addEventListener('input', function () {
+        loadPhoneLib().then(function (lib) {
+          if (!lib) return;
+          var p = lib.parsePhoneNumberFromString(phoneInput.value.trim(), ccSelect.value);
+          if (p && p.isValid()) { phoneInput.setCustomValidity(''); showPhone('ok', '\u2713 ' + p.formatInternational()); }
+          else if (!phoneHint.classList.contains('bad')) { showPhone('', ''); }
+        });
+      });
+      phoneInput.addEventListener('blur', function () {
+        if (!phoneInput.value.trim()) return;
+        loadPhoneLib().then(function (lib) { checkPhone(lib); });
+      });
+      ccSelect.addEventListener('change', function () {
+        setPhonePlaceholder();
+        loadPhoneLib().then(function (lib) { if (phoneInput.value.trim()) checkPhone(lib); });
+      });
+
       /* ---------- form submit ---------- */
       // Registrations are saved to a Google Sheet via Apps Script.
       // Setup steps are in google-apps-script.gs — paste the deployed /exec URL here.
       // Leave FORM_ENDPOINT null to keep the demo behaviour (success state, nothing sent).
-      var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycby0odL0OvgKsEE7RLuqjbv4hSafR0bfSMib2zMZSVi2JgXVxNZGWZEov_ECpU5-8LAN/exec';
+      var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzDj5llFxjRroZwAFPbtyu1j5SG-pqogQpf2dU414wZdZrfdglMzTsr_1cDHQNY36SZ/exec';
       var FORM_SECRET = 'change-me-to-something-random';   // must match SHARED_SECRET in the script
+
+      // After registering, people can message this number to ask for the Zoom link
+      // (the main route is the WhatsApp group button on the confirmation screen).
+      // Number in international format, digits only (+65 9382 2879).
+      var WHATSAPP_NUMBER = '6593822879';
+      // Update the date here too if the webinar date changes.
+      var WEBINAR_DATE = 'Tuesday, 10 November';
+
+      function whatsAppLink(name) {
+        name = (name || '').trim();
+        var msg = 'Hi! ' + (name ? 'I\u2019m ' + name + ' and I\u2019ve' : 'I\u2019ve') +
+          ' just registered for the free online masterclass on ' + WEBINAR_DATE + '. ' +
+          'Could you please send me the Zoom link so I can attend? Thank you!';
+        return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
+      }
+
+      /* ---------- add to calendar ---------- */
+      // Start/end in UTC (7:00–8:00 PM WIB = 12:00–13:00 UTC). Update these with WEBINAR_DATE.
+      var CAL_START = '20261110T120000Z';
+      var CAL_END = '20261110T130000Z';
+      var CAL_TITLE = 'Free Online Masterclass: The Business Model Behind a Successful Health & Wellness Brand';
+      var CAL_DETAILS = 'Online via Zoom. The Zoom link is shared in the WhatsApp group: ' +
+        'https://chat.whatsapp.com/Gt5EmqWtcX8DFRVYjoRZDt';
+
+      // Google applies the person's default event reminder (usually 30 minutes before).
+      document.getElementById('cal-google').href =
+        'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+        '&text=' + encodeURIComponent(CAL_TITLE) +
+        '&dates=' + CAL_START + '/' + CAL_END +
+        '&details=' + encodeURIComponent(CAL_DETAILS) +
+        '&location=' + encodeURIComponent('Online via Zoom') +
+        '&ctz=Asia/Jakarta';
+
+      // .ics file for Apple Calendar / Outlook, with reminders 1 day and 30 minutes before.
+      function icsText(s) { return s.replace(/([\\,;])/g, '\\$1'); }
+      var ics = [
+        'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ZELL-V//Masterclass//EN', 'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:masterclass-' + CAL_START + '@zell-v',
+        'DTSTAMP:' + CAL_START,
+        'DTSTART:' + CAL_START,
+        'DTEND:' + CAL_END,
+        'SUMMARY:' + icsText(CAL_TITLE),
+        'DESCRIPTION:' + icsText(CAL_DETAILS),
+        'LOCATION:Online via Zoom',
+        'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:Masterclass tomorrow', 'TRIGGER:-P1D', 'END:VALARM',
+        'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:Masterclass starts in 30 minutes', 'TRIGGER:-PT30M', 'END:VALARM',
+        'END:VEVENT', 'END:VCALENDAR'
+      ].join('\r\n');
+      document.getElementById('cal-ics').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
 
       var form = document.getElementById('reg-form');
       var errEl = document.getElementById('cf-error');
@@ -3762,52 +4428,70 @@
         e.preventDefault();
         errEl.classList.remove('show');
 
-        if (!form.checkValidity()) {
-          errEl.textContent = 'Please complete every required field with valid details.';
-          errEl.classList.add('show');
-          var bad = form.querySelector(':invalid');
-          if (bad) bad.focus();
-          return;
-        }
-
         var btn = form.querySelector('button[type="submit"]');
         var label = btn.innerHTML;
         btn.disabled = true;
-        btn.textContent = 'Securing your seat…';
 
-        function done() {
-          form.style.display = 'none';
-          okEl.classList.add('show');
-          // Meta conversion event — lets you optimise ads for registrations, not just clicks.
-          if (typeof fbq === 'function') {
-            fbq('track', 'CompleteRegistration', { content_name: 'Masterclass registration' });
+        // Give the phone library up to 4s to arrive; after that, fall back to the basic check.
+        var timeout = new Promise(function (r) { setTimeout(function () { r(null); }, 4000); });
+        Promise.race([loadPhoneLib(), timeout]).then(function (lib) {
+          var e164 = checkPhone(lib);
+
+          if (!e164 || !form.checkValidity()) {
+            btn.disabled = false;
+            errEl.textContent = !e164
+              ? 'Please enter a valid WhatsApp mobile number — we use it to send you the Zoom link.'
+              : 'Please complete every required field with valid details.';
+            errEl.classList.add('show');
+            var bad = !e164 ? phoneInput : form.querySelector(':invalid');
+            if (bad) bad.focus();
+            return;
           }
+
+          submitRegistration(e164);
+        });
+
+        function submitRegistration(e164) {
+          btn.textContent = 'Securing your seat…';
+
+          function done() {
+            // Meta conversion event — lets you optimise ads for registrations, not just clicks.
+            if (typeof fbq === 'function') {
+              fbq('track', 'CompleteRegistration', { content_name: 'Masterclass registration' });
+            }
+
+            // "Message us" opens a chat with a pre-filled message that includes their name.
+            document.getElementById('wa-open').href = whatsAppLink(document.getElementById('f-name').value);
+            form.style.display = 'none';
+            okEl.classList.add('show');
+          }
+          function fail() {
+            btn.disabled = false;
+            btn.innerHTML = label;
+            errEl.textContent = 'Something went wrong. Please try again, or message us on WhatsApp.';
+            errEl.classList.add('show');
+          }
+
+          if (!FORM_ENDPOINT) { done(); return; }
+
+          var payload = Object.fromEntries(new FormData(form));
+          payload.phone = e164;   // always stored as +<country code><number>
+          payload.secret = FORM_SECRET;
+          payload.page = location.href;
+          payload.referrer = document.referrer;
+
+          // text/plain keeps this a "simple" request — Apps Script web apps reject
+          // the CORS preflight that an application/json content type would trigger.
+          fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
+          }).then(function (r) {
+            return r.json().catch(function () { return { ok: r.ok }; });
+          }).then(function (res) {
+            res && res.ok ? done() : fail();
+          }).catch(fail);
         }
-        function fail() {
-          btn.disabled = false;
-          btn.innerHTML = label;
-          errEl.textContent = 'Something went wrong. Please try again, or message us on WhatsApp.';
-          errEl.classList.add('show');
-        }
-
-        if (!FORM_ENDPOINT) { done(); return; }
-
-        var payload = Object.fromEntries(new FormData(form));
-        payload.secret = FORM_SECRET;
-        payload.page = location.href;
-        payload.referrer = document.referrer;
-
-        // text/plain keeps this a "simple" request — Apps Script web apps reject
-        // the CORS preflight that an application/json content type would trigger.
-        fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(payload)
-        }).then(function (r) {
-          return r.json().catch(function () { return { ok: r.ok }; });
-        }).then(function (res) {
-          res && res.ok ? done() : fail();
-        }).catch(fail);
       });
     })();
   </script>
